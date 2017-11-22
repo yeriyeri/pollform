@@ -1,0 +1,87 @@
+	body.index { margin-top: 0px; margin-left: 0px; margin-right: 0px;  background-color: #F5F7F9;}
+	div.index_top { background-color: white;}
+	div.index_top header { background-color: none; text-align: center; padding: 5% 5%; margin-bottom: 0px;}
+	div.index_top header a { font-weight: bold; font-size: 150%;}
+	div.index_top header a:link { text-decoration: none; color: black;}
+	div.index_top header a:visited { text-decoration: none; color: black;}
+	ul.menu { display: inline-block; height: 40px; width: 65%; background-color: blue; margin-top: 0px; margin-bottom: 0px; padding-left: 5%; padding-right: 1%; list-style: none; text-align: center; border-top: 1px solid #F5F7F9; border-bottom: 2px solid #F5F7F9; }
+	ul.menu li { height: 100%; color: black; padding: 0px; display: inline-block; position:relative; }
+	ul.menu a:link { text-decoration: none; color: black;}
+	ul.menu a:visited { text-decoration: none; color: black;}
+	ul.menu li:hover { background-color: #F5F7F9; }
+	ul.menu li:before, ul#menu li:after{ content:''; position:absolute; top:0; right:0; height:2px; width:0; background: #3B3838; transition:400ms ease all;}
+	ul.menu li:after{ right:inherit; top:inherit; left:0; bottom:0;}
+	ul.menu li:hover:before, ul#menu li:hover:after{ width:100%; transition:800ms ease all;}
+	div.index_middle { background-color: yellow; padding-top: 1%; padding-bottom: 1.5%; padding-left: 6%; padding-right: 6%; height: 520px;}
+	div.index_middle section { margin: 1px 1px; display: inline-block; align: middle;}
+	section.index_article { background-color: pink; width: 70%; height: 100%;}
+	.index_article iframe { background-color: white; border: 2px solid #F2F2F2;}
+	div#ind_article_section2 { height: 100px; background-color: red;}
+	section.index_right_sec { background-color: #F5F7F9; width: 28%; height: 80%; vertical-align: top;}
+	div.index_login { background-color: green; padding-top: 5%; padding-bottom: 4%; margin-bottom: 1.5%; border: 2px solid #F2F2F2; vertical-align: middle;}
+	div.index_login div {background-color: pink;}
+	div.index_login table { background-color: #F5F7F9; border-collapse: collapse; margin-bottom: 2%; border: 2px solid #F2F2F2; width: 90%;}
+	div.index_login table td { border: 2px solid #F2F2F2; padding: 0px 0px;}
+	iframe#index_banner { height: 80%; padding: 0px; background: white; border: 2px solid #F2F2F2;}
+	.id_pw { width: 100%; height: 28px; border: none;}
+	#id_pw_find { text-align: left; padding-left: 1%; padding-right: 1%; margin-left: 7.5%;, margin-right: 7.5%; margin-bottom: 1%;}
+	#id_pw_find a { font-size: 80%; color:#AAAAAA;}
+	#id_pw_find a:link { text-decoration: none; font-size: 80%; color: #AAAAAA;}
+	#id_pw_find a:visited { text-decoration: none; font-size: 80%; color: #AAAAAA;}
+	#login_btn { color:#AAAAAA; background: #F5F7F9; border: none; width: 100%; height: 100%; text-decoration: none; font-size: 85%; padding: 29% 30.3%;}
+	
+	
+	.login_font { color: black; font-size: 85%; padding: 2%;}
+	div.login_login { background-color: white; height: 17%; padding-top: 3%; padding-bottom: 2%; margin-bottom: 1.5%; border: 2px solid #F2F2F2;}
+	div.login_login table { border-collapse: collapse; margin-bottom: 1%; border: 2px solid #F5F7F9; width: 95%; height: 100%;}
+	div.login_login table td { border: 2px solid #F5F7F9;}
+	iframe#login_banner { height: 78.4%; padding: 0px; background: white; border: 2px solid #F2F2F2;}
+	
+	
+	div.mp_middle { background-color: #F5F7F9; margin-left: 5%; margin-right: 5%; padding-top: 1%; padding-left: 1%; padding-right: 1%;}
+	div.mp_middle section { margin: 1px 1px; display: inline-block; align: middle;}
+	section#mp_left_sec { background-color: #F5F7F9; width: 23%; height: 520px; vertical-align: top;}
+	div.mp_login { background-color: white; width: 98.6%; height: 15%; padding-top: 3%; padding-bottom: 3%; margin-bottom: 1.5%; border: 2px solid #F2F2F2;}
+	div.mp_login table { border-collapse: collapse; margin-bottom: 1%; border: 2px solid #F5F7F9; width: 95%; height: 100%;}
+	div.mp_login table td { border: 2px solid #F5F7F9;}
+	ul.mp_ct { height: 40px; background-color: white; padding-left: 2%; padding-right: 2%; list-style: none; text-align: left;}
+	ul.mp_ct li { color: black; font-size: 80%; padding: 5%; position:relative; }
+	ul.mp_ct li a:link { text-decoration: none; color: black;}
+	ul.mp_ct li a:visited { text-decoration: none; color: black;}
+	#mp_ls_banner { height: 50%; background-color: white; margin-top: 3%;border: 2px solid #F2F2F2;}
+	#mp_article { background-color: yellow; width: 74.7%; height: 520px; }
+	#mp_article iframe { background-color: white; border: 2px solid #F2F2F2;}
+	
+	body#il { padding-top: 5%; padding-left: 5%; padding-right: 5%;}
+	button.il_btn { background-color: #F5F7F9; border: 2px solid #F2F2F2;}
+	.il_font { color: black; font-size: 90%; margin-top: 7%;}
+	a.il_lk:link { text-decoration: none; color: black;}
+	a.il_lk:visited { text-decoration: none; color: black;}
+	table.il_table { text-align: center; border-collapse: collapse; border: 1px solid black; width: 100%; margin-top: 5%; margin-bottom: 5%;}
+	table.il_table th { border: 1px solid black; font-size: 90%; padding: 1%;}
+	table.il_table td{ border: 2px solid #F2F2F2; font-size: 90%; padding: 1%;}
+	
+	table.result_table { margin-left: auto; margin-right: auto; text-align: center; border-collapse: collapse; border: 1px solid black; width: 50%; margin-top: 5%; margin-bottom: 5%;}
+	table.result_table td{ border: 1px solid black; font-size: 90%; padding-left: 3%; padding-right: 3%; padding-top: 1.5%; padding-bottom: 1.5%;}
+	
+	body#insert { padding: 1px 1px; margin-top: 0px; margin-left: 0px; margin-right: 0px;  background-color: white;}
+	div.ins_middle { background-color: white; height: 520px; vertical-align: top; align: left; }
+	div.ins_middle section { display: inline-block; margin-left: 0px; margin-right: 0px;}
+	.ins_article { background-color: yellow; width: 73.5%; height: 430px;}
+	.ins_article iframe { background-color: white; border: 2px solid #F2F2F2;}
+	table.ins_table { background-color: white; text-align: center; border-collapse: collapse; border: 1px solid black; width: 30%; margin-left: auto; margin-right: auto;}
+	table.ins_table th, td{ border: 2px solid white; font-size: 80%; padding: 1% 1%;}
+	section.ins_left_sec { background-color: white; width: 25%; height: 100%; vertical-align: top;}
+	iframe#ins_banner { height: 82.5%; padding: 0px; background: white; border: 2px solid #F2F2F2;}
+	
+	div.membership_middle{ background-color: #F5F7F9; margin-left: 5%; margin-right: 5%; padding-top: 1%; padding-left: 1%; padding-right: 1%; height: 520px;}
+	div.membership_input { background-color: white;  border: 2px solid #F2F2F2; width: 45%;  border: none; height: 40%; margin-bottom: 1%;}
+	div.membership_input table { background-color: white; border-collapse: collapse; border: 2px solid #F2F2F2; height: 100%; width: 100%; }
+	div.membership_input table td { border: 2px solid #F2F2F2; text-align: center; vertical-align: top; padding-top: 2%; padding-bottom: 2%; padding-left: 2.5%; padding-right: 2.5%;}
+	#mi_btn { background-color: white; border: 2px solid #F2F2F2; height: 50%;}
+	.mi_input { width: 99%; height: 60%; border: none;}
+	.mi_input2 { width: 99%; height: 100%; border: none;}
+	div.membership_input2 { background-color: white;  border: 2px solid #F2F2F2; width: 45%;  border: none; height: 30%; margin-bottom: 1%;}
+	div.membership_input2 table { background-color: white; border-collapse: collapse; border: 2px solid #F2F2F2; height: 100%; width: 100%; }
+	div.membership_input2 table td { border: 2px solid #F2F2F2; text-align: center; vertical-align: top; padding-top: 2%; padding-bottom: 2%; padding-left: 2.5%; padding-right: 2.5%;}
+	

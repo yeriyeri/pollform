@@ -109,7 +109,7 @@
 	.menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */ 
 							text-decoration:none; /* a 태그의 꾸밈 효과 제거 */ 
 							display: block; /* a 태그의 클릭 범위를 넓힘 */ 
-							width: 120.1px; /* 기본 넓이를 150px로 설정 */ 
+							width: 118.7px; /* 기본 넓이를 150px로 설정 */ 
 							font-size: 12px; /* 폰트 사이즈를 12px로 설정 */ 
 							font-weight: bold; /* 폰트를 굵게 설정 */ 
 							font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */ } 
@@ -117,7 +117,7 @@
 	.topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */ 
 								color: white; /* 글씨 색 빨간색 */ 
 								background-color: #4d4d4d; /* 배경색을 밝은 회색으로 설정 */ } 
-	.topMenuLi:before, .topMenuLi:after { content:''; position:absolute; top:0; right:0; height:2px; width:0; background: grey; transition:400ms ease all;}
+	.topMenuLi:before, .topMenuLi:after { content:''; position:absolute; top:0; right:0; height:2px; width:0; background: #F5F7F9; transition:400ms ease all;}
 	.topMenuLi:after { right:inherit; top:inherit; left:0; bottom:0; }
 	.topMenuLi:hover:before, .topMenuLi:hover:after { width:100%; transition:800ms ease all; }
 								

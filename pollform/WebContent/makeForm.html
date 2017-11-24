@@ -4,6 +4,106 @@
 <meta charset="UTF-8">
 <title>Poll Form</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script language="javascript">
+	function categoryChange() {// 대분류 변한 경우
+	 var x = document.makeForm.largeCategory.options.selectedIndex;//선택한 인덱스
+	 var groups=document.makeForm.largeCategory.options.length;//대분류 갯수
+	 var group=new Array(groups);//배열 생성
+	 for (i=0; i<groups; i++) {
+	  group[i]=new Array();
+	 }
+	 // 옵션(<option>) 생성
+	 group[0][0]=new Option("중분류","mCtg");
+	 group[1][0]=new Option("중분류","mCtg");
+	 group[1][1]=new Option("학교 교육","mCtg1");
+	 group[1][2]=new Option("교육 일반","mCtg2");
+	 group[2][0]=new Option("중분류","mCtg");
+	 group[2][1]=new Option("문학 도서","mCtg3");
+	 group[2][2]=new Option("순수예술","mCtg4");
+	 group[2][3]=new Option("영화/가요/연예","mCtg5");
+	 group[2][4]=new Option("문화 일반","mCtg6");
+	 group[3][0]=new Option("중분류","mCtg");
+	 group[3][1]=new Option("TV","mCtg7");
+	 group[3][2]=new Option("라디오","mCtg8");
+	 group[3][3]=new Option("신문","mCtg9");
+	 group[3][4]=new Option("기타 매체","mCtg10");
+	 group[4][0]=new Option("중분류","mCtg");
+	 group[4][1]=new Option("복지","mCtg11");
+	 group[4][2]=new Option("자연/환경","mCtg12");
+	 group[4][3]=new Option("사회 일반","mCtg13");
+	 group[5][0]=new Option("중분류","mCtg");
+	 group[5][2]=new Option("국방","mCtg14");
+	 group[5][1]=new Option("국회","mCtg15");
+	 group[5][3]=new Option("대통령","mCtg16");
+	 group[5][4]=new Option("사법/치안","mCtg17");
+	 group[5][5]=new Option("정당","mCtg18");
+	 group[5][6]=new Option("정부","mCtg19");
+	 group[5][7]=new Option("행정","mCtg20");
+	 group[5][8]=new Option("정치 일반","mCtg21");
+	 group[6][0]=new Option("중분류","mCtg");
+	 group[6][1]=new Option("건설","mCtg22");
+	 group[6][2]=new Option("과학","mCtg23");
+	 group[6][3]=new Option("교통","mCtg24");
+	 group[6][4]=new Option("금융","mCtg25");
+	 group[6][5]=new Option("기업","mCtg26");
+	 group[6][6]=new Option("대외경제/무역","mCtg27");
+	 group[6][7]=new Option("부동산","mCtg28");
+	 group[6][8]=new Option("경제 일반","mCtg29");
+	 group[6][9]=new Option("산업 일반","mCtg30");
+	 group[7][0]=new Option("중분류","mCtg");
+	 group[7][1]=new Option("가정/결혼","mCtg31");
+	 group[7][2]=new Option("관광","mCtg32");
+	 group[7][3]=new Option("소비","mCtg33");
+	 group[7][4]=new Option("여가","mCtg34");
+	 group[7][5]=new Option("정보","mCtg35");
+	 group[7][6]=new Option("직장","mCtg36");
+	 group[7][7]=new Option("정보/통신","mCtg37");
+	 group[7][8]=new Option("기타 일반","mCtg38");
+	 group[8][0]=new Option("중분류","mCtg");
+	 group[8][1]=new Option("교포/외국인","mCtg39");
+	 group[8][2]=new Option("노인","mCtg40");
+	 group[8][3]=new Option("성인","mCtg41");
+	 group[8][4]=new Option("아동","mCtg42");
+	 group[8][5]=new Option("장애인","mCtg43");
+	 group[8][6]=new Option("청소년","mCtg44");
+	 group[8][7]=new Option("복지","mCtg45");
+	 group[9][0]=new Option("중분류","mCtg");
+	 group[9][1]=new Option("기타","mCtg46");
+	 temp = document.makeForm.smallCategory;
+	 for (m = temp.options.length-1 ; m > 0 ; m--) {//현재 값 지우기
+	  temp.options[m]=null
+	 }
+	 for (i=0;i<group[x].length;i++){//값 셋팅
+	  temp.options[i]=new Option(group[x][i].text,group[x][i].value);
+	 }
+	 temp.options[0].selected=true//인덱스 0번째, 즉, 첫번째 선택
+	}
+	
+	function typeChange() {// 대분류 변한 경우
+		 var x = document.makeForm.largeType.options.selectedIndex;//선택한 인덱스
+		 var groups=document.makeForm.largeType.options.length;//대분류 갯수
+		 var group=new Array(groups);//배열 생성
+		 for (i=0; i<groups; i++) {
+		  group[i]=new Array();
+		 }
+		 // 옵션(<option>) 생성
+		 group[0][0]=new Option("세부 유형","mType");
+		 group[1][0]=new Option("세부 유형","mType");
+		 group[1][1]=new Option("4지선다형","mType1");
+		 group[1][2]=new Option("5지선다형","mType2");
+		 group[2][0]=new Option("세부 유형","mType");
+		 group[2][1]=new Option("단답형 (20자 이내)","mType3");
+		 group[2][2]=new Option("서술형  (100자 이내)","mType4");
+		 temp = document.makeForm.smallType;
+		 for (m = temp.options.length-1 ; m > 0 ; m--) {//현재 값 지우기
+		  temp.options[m]=null
+		 }
+		 for (i=0;i<group[x].length;i++){//값 셋팅
+		  temp.options[i]=new Option(group[x][i].text,group[x][i].value);
+		 }
+		 temp.options[0].selected=true//인덱스 0번째, 즉, 첫번째 선택
+		}
+</script>
 </head>
 <body class=index>
 	<!-- 공통 부분-->
@@ -59,8 +159,8 @@
 					<li>|</li>
 					<li class="topMenuLi"><a class="menuLink" href="">정치</a>
 						<ul class="submenu">
-							<li><a href="" class="submenuLink">국회</a></li>
 							<li><a href="" class="submenuLink">국방</a></li>
+							<li><a href="" class="submenuLink">국회</a></li>
 							<li><a href="" class="submenuLink">대통령</a></li>
 							<li><a href="" class="submenuLink">사법/치안</a></li>
 							<li><a href="" class="submenuLink">정당</a></li>
@@ -121,35 +221,33 @@
 		<section style="padding: 6% 0px 0px 0px">
 			<!-- section1 시작 -->
 			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
-				<form method="POST" action="">
+				<form method="POST" action="makeWebFormat" name="makeForm">
 					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
-					<select name="category" class="dropdown-el">
-						<option value="none" selected>대분류</option>
-						<option value="">교육</option>
-						<option value="">문화</option>
-						<option value="">매체</option>
-						<option value="">사회</option>
-						<option value="">정치</option>
-						<option value="">경제/산업</option>
-						<option value="">라이프스타일</option>
-						<option value="">특수계층조사</option>
-						<option value="">기타</option>
+					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
+						<option value="lCtg">대분류</option>
+						<option value="lCtg1">교육</option>
+						<option value="lCtg2">문화</option>
+						<option value="lCtg3">매체</option>
+						<option value="lCtg4">사회</option>
+						<option value="lCtg5">정치</option>
+						<option value="lCtg6">경제/산업</option>
+						<option value="lCtg7">라이프스타일</option>
+						<option value="lCtg8">특수계층조사</option>
+						<option value="lCtg9">기타</option>
+					</select> 
+					<select name="smallCategory" class="dropdown-el" size=1>
+				 		<option value="mCtg">중분류</option>
 					</select>
-					
-					<select name="유형" class="dropdown-el">
-						<option value="none" selected>유형</option>
-						<option value="">선택형</option>
-						<option value="">서답형</option>
-						<option value="">혼합</option>
+					<select name="largeType" class="dropdown-el" onchange="typeChange()" size=1>
+						<option value="lType" selected>유형</option>
+						<option value="lType1">선다형</option>
+						<option value="lType2">서답형</option>
 					</select>
-					<select name="유형" class="dropdown-el">
-						<option value="none" selected>문항수</option>
-						<option value="">객관식</option>
-						<option value="">서술식</option>
-						<option value="">혼합</option>
+					<select name="smallType" class="dropdown-el" size=1>
+						<option value="mType" selected>세부유형</option>
 					</select><br/>
 					<div style="margin-top: 1%; vertical-align: middle">
-						<b style="font-size: 13px">시작일 <input type="date" name="startDate" class="makeF_date">종료일 <input type="date" name="EndDate" class="makeF_date"></b>
+						<b style="font-size: 13px">시작일 <input type="date" name="startDate" class="makeF_date">종료일 <input type="date" name="endDate" class="makeF_date"></b>
 						<div id="makeTag">
 							<input type="text" name="tag" placeholder="검색 태그" style="border: none; width: 60%; line-height: 24px;">
 						</div>

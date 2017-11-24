@@ -103,6 +103,53 @@
 		 }
 		 temp.options[0].selected=true//인덱스 0번째, 즉, 첫번째 선택
 		}
+	
+	 function numCheck(object){
+		   if (object.value < 1){
+		    object.value = 1;
+		   }
+	 }
+	
+	 function valid_Check(){
+		 checkForm=document.makeForm;	
+			if(checkForm.reschName.value=="" || checkForm.largeCategory.value=="" || checkForm.smallCategory.value=="" || checkForm.largeType.value=="" || checkForm.smallType.value=="" || checkForm.qAmount.value==""
+					|| checkForm.startDate.value=="" || checkForm.endDate.value==""){
+				if(checkForm.reschName.value==""){
+					alert("제목란이 비어있습니다.");
+					checkForm.reschName.focus();
+					return false;
+				} else if(checkForm.largeCategory.value=="lCtg"){
+					alert("대분류란이 비어있습니다.")
+					checkForm.largeCategory.focus();
+					return false;
+				} else if(checkForm.smallCategory.value=="sCtg"){
+					alert("중분류란이 비어있습니다.")
+					checkForm.smallCategory.focus();
+					return false;
+				} else if(checkForm.largeType.value=="lType"){
+					alert("유형란이 비어있습니다.")
+					checkForm.largeType.focus();
+					return false;
+				} else if(checkForm.smallType.value=="sType"){
+					alert("세부유형란이 비어있습니다.")
+					checkForm.smallType.focus();
+					return false;
+				} else if(checkForm.qAmount.value==""){
+					alert("문항수란이 비어있습니다.")
+					checkForm.qAmount.focus();
+					return false;
+				} else if(checkForm.startDate.value==""){
+					alert("시작일란이 비어있습니다.")
+					checkForm.startDate.focus();
+					return false;
+				} else if(checkForm.endDate.value==""){
+					alert("문항수란이 비어있습니다.")
+					checkForm.endDate.focus();
+					return false;
+				} else { return true;
+				}; 
+			}
+	 }
 </script>
 </head>
 <body class=index>
@@ -221,8 +268,9 @@
 		<section style="padding: 6% 0px 0px 0px">
 			<!-- section1 시작 -->
 			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
-				<form method="POST" action="makeWebFormat" name="makeForm">
+				<form method="POST" action="makeWebFormat" name="makeForm" onsubmit="return valid_Check(this);">
 					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
+					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="reschName" class="makeF_date" style="width: 150px; line-height: 100px;required: required"></b>
 					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
 						<option value="lCtg">대분류</option>
 						<option value="lCtg1">교육</option>
@@ -237,22 +285,23 @@
 					</select> 
 					<select name="smallCategory" class="dropdown-el" size=1>
 				 		<option value="sCtg">중분류</option>
-					</select>
-					<select name="largeType" class="dropdown-el" onchange="typeChange()" size=1>
+					</select><br/>
+					<select name="largeType" class="dropdown-el" onchange="typeChange()" required="required" size=1>
 						<option value="lType" selected>유형</option>
 						<option value="lType1">선다형</option>
 						<option value="lType2">서답형</option>
 					</select>
-					<select name="smallType" class="dropdown-el" size=1>
+					<select name="smallType" class="dropdown-el"  required="required" size=1>
 						<option value="sType" selected>세부유형</option>
-					</select><br/>
+					</select>
+					<b style="font-size: 13px">문항수 <input type="number" name="qAmount" class="makeF_date" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)"></b>
 					<div style="margin-top: 1%; vertical-align: middle">
 						<b style="font-size: 13px">시작일 <input type="date" name="startDate" class="makeF_date">종료일 <input type="date" name="endDate" class="makeF_date"></b>
 						<div id="makeTag">
 							<input type="text" name="tag" placeholder="검색 태그" style="border: none; width: 60%; line-height: 24px;">
 						</div>
 					</div>
-					<input type="submit" id="member_btn" value="선택한 툴로 이동" style="margin-top: 8%;">
+					<input type="submit" id="make_btn" onclick="document.getElementById('make_btn').submit();" value="선택한 툴로 이동" style="margin-top: 8%;">
 				</form>
 			</div>
 			<!-- section1 끝-->

@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
- <style> 
+ <style type="text/css">
       ul.mylist, ol.mylist { 
       .   list-style: none; 
     margin: 0px; 
@@ -20,9 +20,33 @@ ul.mylist li, ol.mylist li {
    cursor: pointer; 
 } 
 
-    </style> 
+        /* 기본 설정*/
+         a{text-decoration:none; color:#585858;}         
+                            
+         
+         /* nav tag */
+         nav ul{padding-top:10px;}                     /*  상단 여백 10px  */
+         nav ul li {
+            display:inline;                         /*  세로나열을 가로나열로 변경 */
+            border-left:2px solid #999;             /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
+            font:bold 20px Dotum;                     /* 폰트 설정 - 12px의 돋움체 굵은 글씨로 표시 */
+            padding:0 50px;                         /* 각 메뉴 간격 */
+        
+        }
+         nav ul li:first-child{border-left:none;}     /* 메뉴 분류중 제일 왼쪽의 "|"는 삭제        
+
+</style>
 </head> 
 <body> 
+
+    <nav>
+        <ul>
+            <li><a href="survey_list.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            진행 중인 설문조사&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+            <li><a href="magam.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp마감된 설문조사&nbsp&nbsp&nbsp</a></li>
+
+        </ul>    
+    </nav>    
 
     <!-- <nav> --> 
     <ul class="mylist"> 
@@ -36,7 +60,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 						<br>
 						<div class="area-btns">
-				
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 
@@ -50,7 +74,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 			
 						<div class="area-btns">
-						
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 
@@ -64,7 +88,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 						<br>
 						<div class="area-btns">
-						
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 
@@ -79,7 +103,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 						<br>
 						<div class="area-btns">
-							
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 
@@ -93,7 +117,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 						<br>
 						<div class="area-btns">
-						
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 
@@ -108,7 +132,7 @@ ul.mylist li, ol.mylist li {
 						</div>
 						<br>
 						<div class="area-btns">
-					
+							<input type="submit" value="참여하기"></a>
 									<input type="submit" value="결과보기"></a>
 							</div>
 							</li> 

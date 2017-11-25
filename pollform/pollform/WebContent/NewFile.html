@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Opinion Poll</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<style type="text/css">
+/* boardcss_list 에서 사용되는 글 등록 버튼 테이블 크기 */
+#boardcss_list_add_button_table { width: 100%; margin: 0 auto 15px; /*position: relative; background: #bddcff; font-weight: bold;*/ }
+
+/* 화면에 보여지는 글 등록 버튼 */
+#boardcss_list_add_button_table .add_button { cursor: pointer; border: 1px solid #bebebe; position: absolute; right: 10px; top: 10px; width: 85px; padding: 6px 0 6px; text-align: center; font-weight: bold; }
+#boardcss_list_add_button_table .add_button a { color: #ffffff; }
+
+/* 글 등록 버튼과 글 목록이 겹치지 않게 만들어준 아무것도 아닌것 */
+#boardcss_list_add_button_table .boardcss_list_add_button ul { width: 100%; overflow: hidden; height: 10px;}
+
+/* boardcss_list 에서 사용하는 글 목록 테이블 크기*/
+.boardcss_list_table { width: 100%; }
+
+/* 화면에 보여지는 글 목록 테이블 */
+.list_table { width: 100%; }
+
+/* 화면에 보여지는 caption */
+.list_table caption { display: none; }
+
+/* list_table 에서 사용되는 thead */
+.list_table thead th { text-align: center; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; padding: 8px 0; background: #faf9fa; }
+
+/* list_table 에서 사용되는 tbody */
+.list_table tbody td { text-align: center;  border-bottom: 1px solid #e5e5e5; padding: 5px 0; }
+
+/* boardcss_list 에서 사용되는 글 검색 테이블 크기 */
+#boardcss_list_search { width: 100%; }
+
+#boardcss_list_search ul{ float: right; width: 550px; display: inline; margin-right:-130px; }
+
+#boardcss_list_search ul li { display: inline; font-weight: bold; }
+
+/* input 상자 모양 */
+#search { width:200px; height:30px; text-align:center;  border: 1px solid #cfcfcf; vertical-align:middle; line-height:29px; }
+#search2 { width:100px; height:30px; text-align:center;  border: 1px solid #cfcfcf; vertical-align:middle; line-height:29px; }
+
+/* 검색 버튼 */
+#boardcss_list_search ul li.search_button { cursor: pointer; width: 60px; text-align: center; border: 1px solid #bebebe; padding: 6px 0 6px; vertical-align:middle; font-weight: bold; margin-right:10px; /* background: #77b32f; */ }
+#boardcss_list_search ul li.search_button a { color: #ffffff; }
+
+/* 상세 검색버튼 */
+#boardcss_list_search ul li.detail_button { cursor: pointer; width: 60px; text-align: center;  border: 1px solid #bebebe; padding: 6px 0 6px; vertical-align:middle; font-weight: bold; /* background: #77b32f; */ }
+#boardcss_list_search ul li.detail_button a { color: #ffffff; }
+
+/* 상세검색 테이블 */
+.detailSearch { width: 100%; border-top: 1px solid #e5e5e5; }
+.detailSearch .detailSearch_table { width: 70%; border-top: 0; border-bottom: 1px solid #e5e5e5; }
+
+.detailSearch .detailSearch_table tbody td { padding: 5px 0; }
+.detailSearch .detailSearch_table tbody td.detailSearch_td { vertical-align: middle; height: 30px; }
+
+.detail_td { width: 100%; position: relative; height: 30px; }
+.detail_td .detailSearch_button { cursor: pointer; width: 54px; position: absolute; border: 1px solid #bebebe;  padding: 6px 0 6px; text-align: center; font-weight: bold; right: 44px; display: block; /* background: #77b32f; */ }
+.detail_td .detailSearch_button a { color: #ffffff; }
+
+/* 상세검색 닫기 */
+.closeButton_table { width: 100%; text-align: right; }
+.closeButton { width: 85px; text-align: center; display: inline-block; border: 1px solid #bebebe; padding: 6px 0 6px; cursor: pointer; font-weight: bold; }
+
+</style>
+
+<body class="index">
+	<!-- 공통 부분-->
+	<div class="index_top">
+		<header>
+			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
+		</header>
+		<!-- 메뉴 시작 -->
+		<div class="menu">
+			<nav id="topMenu">
+				<ul>
+					<li class="topMenuLi"><a class="menuLink" href="">교육</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">학교 교육</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">교육 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">문화</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">문학 도서</a></li>
+							<li><a href="" class="submenuLink">순수예술</a></li>
+							<li><a href="" class="submenuLink">영화/가요/연예</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">문화 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">매체</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">TV</a></li>
+							<li><a href="" class="submenuLink">라디오</a></li>
+							<li><a href="" class="submenuLink">신문</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 매체</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">사회</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">복지</a></li>
+							<li><a href="" class="submenuLink">자연/환경</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">사회 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">정치</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">국회</a></li>
+							<li><a href="" class="submenuLink">국방</a></li>
+							<li><a href="" class="submenuLink">대통령</a></li>
+							<li><a href="" class="submenuLink">사법/치안</a></li>
+							<li><a href="" class="submenuLink">정당</a></li>
+							<li><a href="" class="submenuLink">정부</a></li>
+							<li><a href="" class="submenuLink">행정</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">정치 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">경제/산업</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">건설</a></li>
+							<li><a href="" class="submenuLink">과학</a></li>
+							<li><a href="" class="submenuLink">교통</a></li>
+							<li><a href="" class="submenuLink">금융</a></li>
+							<li><a href="" class="submenuLink">기업</a></li>
+							<li><a href="" class="submenuLink">대외경제/무역</a></li>
+							<li><a href="" class="submenuLink">부동산</a></li>
+							<li><a href="" class="submenuLink">경제 일반</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">산업 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">라이프스타일</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">가정/결혼</a></li>
+							<li><a href="" class="submenuLink">관광</a></li>
+							<li><a href="" class="submenuLink">소비</a></li>
+							<li><a href="" class="submenuLink">여가</a></li>
+							<li><a href="" class="submenuLink">정보</a></li>
+							<li><a href="" class="submenuLink">직장</a></li>
+							<li><a href="" class="submenuLink">정보/통신</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 일반</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">특수계층조사</a>
+						<ul class="submenu">
+							<li><a href="" class="submenuLink">교포/외국인</a></li>
+							<li><a href="" class="submenuLink">노인</a></li>
+							<li><a href="" class="submenuLink">성인</a></li>
+							<li><a href="" class="submenuLink">아동</a></li>
+							<li><a href="" class="submenuLink">장애인</a></li>
+							<li><a href="" class="submenuLink">청소년</a></li>
+							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">복지</a></li>
+						</ul>
+					</li>
+						<li>|</li>
+					<li class="topMenuLi"><a class="menuLink" href="">기타</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- 메뉴 끝 -->
+	</div>
+	<!-- 공통 부분 끝 -->
+	<div class="mp_middle">
+		<section id="mp_left_sec" align="middle">
+			<div class="mp_login" align="middle">
+				<table>
+					<tr>
+						<td rowspan="2" align="center" width="30%" height="100%"><img
+							src="profile.png" alt="프로필사진"
+							style="color: #AAAAAA; font-size: 80%;" width="100%"
+							height="100%"></img></td>
+						<td class="login_font">과제님 환영합니다.</td>
+					</tr>
+					<tr>
+						<td><a class="login_font" href="my_page.html"
+							style="color: #AAAAAA; font-size: 80%; text-decoration: none;">내
+								계정 설정 바로가기</a></td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="mp_ls_banner"  >
+				<ul class="mp_ct">
+					<li>관심분야 등록</li>
+					<li><a href="insert_list.html" target="content">작성한 설문조사</a></li>
+					<li><a href="">참여한 설문조사</a></li>
+					<li><a href="">마감된 설문조사</a></li>
+					<li><a href="">내 등급 -- reward 지급</a></li>
+					<li><a href="">기타</a></li>
+				</ul>
+			</div>
+		</section>
+		<section id="mp_article" style="background-color: #F8F8FF">
+		<article>
+	
+ <style> 
+      ul.mylist, ol.mylist { 
+      .   list-style: none; 
+    margin: 0px; 
+   padding: 0px; 
+   
+    max-width: 900px; 
+    width: 100%; 
+} 
+   
+ul.mylist li, ol.mylist li { 
+   display: inline-block; 
+    padding: 10px; 
+   margin-bottom: 5px; 
+    border: 2px solid #5F5D5D; 
+   font-size: 12px; 
+   cursor: pointer; 
+} 
+
+    </style> 
+</head> 
+
+    <!-- <nav> --> 
+    <ul class="mylist"> 
+        <li>	<h3>교육/학교교육</h3>
+							<h4>2015개정 교육과정에 대해</h4>
+							<div class="thumbs-survey">
+													<p><img src="/img/zz.jpg"/></p>
+												</div>
+							<span><span>8문항 (01분 36초)</span>
+							응답수 : 76&nbsp;&nbsp;&#124;&nbsp;&nbsp;목표응답수 : 1,000</span>
+						</div>
+						<br>
+						<div class="area-btns">
+							<input type="submit" value="참여하기"></a>
+									<input type="submit" value="결과보기"></a>
+							</div>
+							</li> 
+         <li>	<h3>매체/TV</h3>
+							<h4>mbc결방에 대한 의견</h4>
+							<div class="thumbs-survey">
+													<p><img src="/img/zz.jpg"/></p>
+												</div>
+							<span><span>7문항 (02분 19초)</span>
+							응답수 : 123&nbsp;&nbsp;&#124;&nbsp;&nbsp;목표응답수 : 1,000</span>
+						</div>
+						<br>
+						<div class="area-btns">
+							<input type="submit" value="참여하기"></a>
+									<input type="submit" value="결과보기"></a>
+							</div>
+							</li> 
+        <li>	<h3>라이프스타일/관광</h3>
+							<h4>이번 겨울방학 때 갈만한 곳</h4>
+							<div class="thumbs-survey">
+													<p><img src="/img/zz.jpg"/></p>
+												</div>
+							<span><span>8문항 (01분 36초)</span>
+							응답수 : 76&nbsp;&nbsp;&#124;&nbsp;&nbsp;목표응답수 : 1,000</span>
+						</div>
+						<br>
+						<div class="area-btns">
+							<input type="submit" value="참여하기"></a>
+									<input type="submit" value="결과보기"></a>
+							</div>
+							</li> 
+       <br>
+         <li>	<h3>문화/영화</h3>
+							<h4>새로 개봉한 영화 추천</h4>
+							<div class="thumbs-survey">
+													<p><img src="/img/zz.jpg"/></p>
+												</div>
+							<span><span>8문항 (01분 36초)</span>
+							응답수 : 76&nbsp;&nbsp;&#124;&nbsp;&nbsp;목표응답수 : 1,000</span>
+						</div>
+						<br>
+						<div class="area-btns">
+							<input type="submit" value="참여하기"></a>
+									<input type="submit" value="결과보기"></a>
+							</div>
+							</li> 
+       <li>	<h3>문화/순수예술</h3>
+							<h4>순수예술에 대한 의견</h4>
+							<div class="thumbs-survey">
+													<p><img src="/img/zz.jpg"/></p>
+												</div>
+							<span><span>8문항 (01분 36초)</span>
+							응답수 : 76&nbsp;&nbsp;&#124;&nbsp;&nbsp;목표응답수 : 1,000</span>
+						</div>
+						<br>
+						<div class="area-btns">
+							<input type="submit" value="참여하기"></a>
+									<input type="submit" value="결과보기"></a>
+							</div>
+							</li> 
+    </ul> 
+    <!-- </nav> --> 
+</body> 
+
+
+		
+
+</head>
+</html>

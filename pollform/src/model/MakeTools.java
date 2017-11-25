@@ -40,9 +40,23 @@ public class MakeTools {
 			}
 		} else { // 서답형
 			// 단답형 20자 이내
-			if(smallType=="sType1") {
-							
-			} else { // 서답형 100자 이내
+			if(smallType.equals("sType3")) {
+				try {
+					for(int i = 0; i < amount; i++) {
+						result.add(i, "<h5>Question " + (i+1) +")"+ " <input type=\"text\" name=\"questionNumber" + (i+1) +"\"</h5>"
+										+"<br/><br/>" + "ans. <input type=\"text\" name=\"answerNumber" + (i+1)+ "_1\" onkeyup=\"chkword(this, 20)\">"
+									);
+					}
+					} catch(ArrayIndexOutOfBoundsException e) {
+						System.out.println("배열 참조 에러 발생" + e);
+					}
+			} else { //
+				try {
+					for(int i = 0; i < amount; i++) {
+					}
+					} catch(ArrayIndexOutOfBoundsException e) {
+						System.out.println("배열 참조 에러 발생" + e);
+					}
 			}
 		}
 		return result;

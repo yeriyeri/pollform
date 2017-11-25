@@ -49,18 +49,18 @@ public class MakeWebFormat extends HttpServlet {
 		String endDate = (String) request.getParameter("endDate");
 		String tag = (String) request.getParameter("tag");
 		
-		/*request.setAttribute("a", largeCategory);
-		request.setAttribute("b", smallCategory);
-		request.setAttribute("c", largeType);
-		request.setAttribute("d", smallType);
-		request.setAttribute("e", startDate);
-		request.setAttribute("f", endDate);
-		request.setAttribute("g", tag);
-		request.setAttribut("h", reschName)*/
+		request.setAttribute("reschName", reschName);
+		request.setAttribute("lCtg", largeCategory);
+		request.setAttribute("sCtg", smallCategory);
+		request.setAttribute("lType", largeType);
+		request.setAttribute("sType", smallType);
+		request.setAttribute("qAmount", qAmount);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
+		request.setAttribute("tag", tag);
 		
 		MakeTools tool = new MakeTools();
 		List<String> tools = tool.makeTool(largeType, smallType, qAmount);
-		
 		
 		request.setAttribute("tools", tools);
 		RequestDispatcher view = request.getRequestDispatcher("makeFormResult.jsp");

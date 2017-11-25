@@ -60,8 +60,8 @@ public class MakeWebFormat extends HttpServlet {
 		request.setAttribute("tag", tag);
 		
 		MakeWebTools tool = new MakeWebTools();
-		//List<String> tools = tool.makeWebTool(largeType, smallType, qAmount);
-		List<String> tools = tool.makeWebTool("lTyp1", "sType1", "4");
+		List<String> tools = tool.makeWebTool(largeType, smallType, qAmount);
+		//List<String> tools = tool.makeWebTool("lTyp1", "sType1", "4");
 		
 		request.setAttribute("tools", tools);
 		RequestDispatcher view = request.getRequestDispatcher("makeFormJSP.jsp");

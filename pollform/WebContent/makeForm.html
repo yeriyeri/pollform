@@ -92,8 +92,8 @@
 		 group[1][1]=new Option("4지선다형","sType1");
 		 group[1][2]=new Option("5지선다형","sType2");
 		 group[2][0]=new Option("세부 유형","sType");
-		 group[2][1]=new Option("단답형 (20자 이내)","sType3");
-		 group[2][2]=new Option("서술형  (100자 이내)","sType4");
+		 group[2][1]=new Option("단답형 (한글 10자, 영문 20자)","sType3");
+		 group[2][2]=new Option("서술형 ","sType4");
 		 temp = document.makeForm.smallType;
 		 for (m = temp.options.length-1 ; m > 0 ; m--) {//현재 값 지우기
 		  temp.options[m]=null
@@ -103,6 +103,97 @@
 		 }
 		 temp.options[0].selected=true//인덱스 0번째, 즉, 첫번째 선택
 		}
+	
+	 function numCheck(object){
+		   if (object.value < 1){
+		    object.value = 1;
+		   }
+	 }
+	 
+	 function valid_Check(){
+		 checkForm=document.makeForm;
+		var today = new Date();
+		var date = today.getDate();
+		var month = today.getMonth()+1;
+		var year = today.getFullYear(); 
+		var hour = today.getHours();
+		var minute = today.getMinutes();
+		
+		today = String(year) + String(month) + String(date) + String(hour) + String(minute);
+		today = parseInt(today);
+		var startDateArray = checkForm.startDate.value.split("-");
+		var startDate = startDateArray[0] + startDateArray[1] + startDateArray[2];
+		startDateArray = startDate.split("T");
+		startDate = startDateArray[0] + startDateArray[1];
+		startDateArray = startDate.split(":");
+		startDate = startDateArray[0] + startDateArray[1];
+		startDate = parseInt(startDate);
+		
+		var endDateArray = checkForm.endDate.value.split("-");
+		var endDate = endDateArray[0] + endDateArray[1] + endDateArray[2];
+		endDateArray = endDate.split("T");
+		endDate = endDateArray[0] + endDateArray[1];
+		endDateArray = endDate.split(":");
+		endDate = endDateArray[0] + endDateArray[1];
+		endDate = parseInt(endDate);
+		
+		var chkCode;
+		if ((endDate-startDate)<0)
+			chkCode = "chkCode1";
+		else if((endDate-startDate)<30)
+			chkCode = "chkCode2";
+		
+			if(checkForm.reschName.value=="" || checkForm.largeCategory.value=="" || checkForm.smallCategory.value=="" || checkForm.largeType.value=="" || checkForm.smallType.value=="" || checkForm.qAmount.value==""
+					|| checkForm.startDate.value=="" || (startDate < today)|| checkForm.endDate.value=="" || chkCode=="chkCode1" || chkCode=="chkCode2"){
+				if(checkForm.reschName.value==""){
+					alert("제목란이 비어있습니다.");
+					checkForm.reschName.focus();
+					return false;
+				} else if(checkForm.largeCategory.value=="lCtg"){
+					alert("대분류란이 비어있습니다.")
+					checkForm.largeCategory.focus();
+					return false;
+				} else if(checkForm.smallCategory.value=="sCtg"){
+					alert("중분류란이 비어있습니다.")
+					checkForm.smallCategory.focus();
+					return false;
+				} else if(checkForm.largeType.value=="lType"){
+					alert("유형란이 비어있습니다.")
+					checkForm.largeType.focus();
+					return false;
+				} else if(checkForm.smallType.value=="sType"){
+					alert("세부유형란이 비어있습니다.")
+					checkForm.smallType.focus();
+					return false;
+				} else if(checkForm.qAmount.value==""){
+					alert("문항수란이 비어있습니다.");
+					checkForm.qAmount.focus();
+					return false;
+				} else if(checkForm.startDate.value==""){
+					alert("시작일란이 비어있습니다.")
+					checkForm.startDate.focus();
+					return false;
+				} else if(startDate < today){
+				    alert("시작일이 현재 날짜보다 이전입니다.");
+					checkForm.startDate.focus();
+					return false;
+				} else if(checkForm.endDate.value==""){
+				    alert("마감일란이 비어있습니다." );
+					checkForm.endDate.focus();
+					return false;
+				} else if(chkCode=="chkCode1"){
+				    alert("마감일이 시작일보다 이전입니다.");
+					checkForm.endDate.focus();
+					return false;
+				} else if(chkCode=="chkCode2"){
+				    alert("조사 소요 시간은 최소 30분입니다.");
+					checkForm.endDate.focus();
+					return false;
+				}else { 
+					return true;
+				}; 
+			}
+	 }
 </script>
 </head>
 <body class=index>
@@ -221,8 +312,9 @@
 		<section style="padding: 6% 0px 0px 0px">
 			<!-- section1 시작 -->
 			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
-				<form method="POST" action="makeWebFormat" name="makeForm">
+				<form method="POST" action="makeWebFormat" name="makeForm" onsubmit="return valid_Check(this);">
 					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
+					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="reschName" class="makeF_date" placeholder="설문조사 이름" style="width: 150px; line-height: 100px;required: required"></b>
 					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
 						<option value="lCtg">대분류</option>
 						<option value="lCtg1">교육</option>
@@ -237,22 +329,23 @@
 					</select> 
 					<select name="smallCategory" class="dropdown-el" size=1>
 				 		<option value="sCtg">중분류</option>
-					</select>
-					<select name="largeType" class="dropdown-el" onchange="typeChange()" size=1>
+					</select><br/>
+					<select name="largeType" class="dropdown-el" onchange="typeChange()" required="required" size=1>
 						<option value="lType" selected>유형</option>
 						<option value="lType1">선다형</option>
 						<option value="lType2">서답형</option>
 					</select>
-					<select name="smallType" class="dropdown-el" size=1>
+					<select name="smallType" class="dropdown-el"  required="required" size=1>
 						<option value="sType" selected>세부유형</option>
-					</select><br/>
+					</select>
+					<b style="font-size: 13px">문항수 <input type="number" name="qAmount"  value="1" class="makeF_date" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)"></b>
 					<div style="margin-top: 1%; vertical-align: middle">
-						<b style="font-size: 13px">시작일 <input type="date" name="startDate" class="makeF_date">종료일 <input type="date" name="endDate" class="makeF_date"></b>
+						<b style="font-size: 13px">시작일 <input type="datetime-local" name="startDate" class="makeF_date">마감일 <input type="datetime-local" name="endDate" class="makeF_date"></b>
 						<div id="makeTag">
 							<input type="text" name="tag" placeholder="검색 태그" style="border: none; width: 60%; line-height: 24px;">
 						</div>
 					</div>
-					<input type="submit" id="member_btn" value="선택한 툴로 이동" style="margin-top: 8%;">
+					<input type="submit" id="make_btn" onclick="document.getElementById('make_btn').submit();" value="선택한 툴로 이동" style="margin-top: 8%;">
 				</form>
 			</div>
 			<!-- section1 끝-->

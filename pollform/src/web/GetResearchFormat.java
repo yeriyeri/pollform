@@ -2,7 +2,6 @@ package web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,19 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MakeWebTools;
+import model.GetResearch;
 
 /**
- * Servlet implementation class MakeWebFormat
+ * Servlet implementation class GetResearchFormat
  */
-@WebServlet("/makeWebFormat")
-public class MakeWebFormat extends HttpServlet {
+@WebServlet("/getResearchFormat")
+public class GetResearchFormat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MakeWebFormat() {
+    public GetResearchFormat() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +36,6 @@ public class MakeWebFormat extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		
-		PrintWriter out = response.getWriter();
-		
 		String reschName = (String) request.getParameter("reschName");
 		String largeCategory = (String) request.getParameter("largeCategory");
 		String smallCategory = (String) request.getParameter("smallCategory");
@@ -49,22 +46,12 @@ public class MakeWebFormat extends HttpServlet {
 		String endDate = (String) request.getParameter("endDate");
 		String tag = (String) request.getParameter("tag");
 		
-		request.setAttribute("reschName", reschName);
-		request.setAttribute("lCtg", largeCategory);
-		request.setAttribute("sCtg", smallCategory);
-		request.setAttribute("lType", largeType);
-		request.setAttribute("sType", smallType);
-		request.setAttribute("qAmount", qAmount);
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("tag", tag);
 		
-		MakeWebTools tool = new MakeWebTools();
-		List<String> tools = tool.makeWebTool(largeType, smallType, qAmount);
-		//List<String> tools = tool.makeWebTool("lTyp1", "sType1", "4");
+		GetResearch research = new GetResearch();
+		List<String> _research = research.getResearch("lType1", "sType1", "9");
 		
-		request.setAttribute("tools", tools);
-		RequestDispatcher view = request.getRequestDispatcher("makeFormJSP.jsp");
+		request.setAttribute("research", _research);
+		RequestDispatcher view = request.getRequestDispatcher("participateJSP.jsp");
 		view.forward(request, response);
 	}
 

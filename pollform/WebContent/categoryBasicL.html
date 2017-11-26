@@ -13,25 +13,25 @@
 	  group[i]=new Array();
 	 }
 	 // 옵션(<option>) 생성
-	 group[0][0]=new Option("세부 분류","sCtg");
-	 group[1][0]=new Option("세부 분류","sCtg");
+	 group[0][0]=new Option("중분류","sCtg");
+	 group[1][0]=new Option("중분류","sCtg");
 	 group[1][1]=new Option("학교 교육","sCtg1");
 	 group[1][2]=new Option("교육 일반","sCtg2");
-	 group[2][0]=new Option("세부 분류","sCtg");
+	 group[2][0]=new Option("중분류","sCtg");
 	 group[2][1]=new Option("문학 도서","sCtg3");
 	 group[2][2]=new Option("순수예술","sCtg4");
 	 group[2][3]=new Option("영화/가요/연예","sCtg5");
 	 group[2][4]=new Option("문화 일반","sCtg6");
-	 group[3][0]=new Option("세부 분류","sCtg");
+	 group[3][0]=new Option("중분류","sCtg");
 	 group[3][1]=new Option("TV","sCtg7");
 	 group[3][2]=new Option("라디오","sCtg8");
 	 group[3][3]=new Option("신문","sCtg9");
 	 group[3][4]=new Option("기타 매체","sCtg10");
-	 group[4][0]=new Option("세부 분류","sCtg");
+	 group[4][0]=new Option("중분류","sCtg");
 	 group[4][1]=new Option("복지","sCtg11");
 	 group[4][2]=new Option("자연/환경","sCtg12");
 	 group[4][3]=new Option("사회 일반","sCtg13");
-	 group[5][0]=new Option("세부 분류","sCtg");
+	 group[5][0]=new Option("중분류","sCtg");
 	 group[5][2]=new Option("국방","sCtg14");
 	 group[5][1]=new Option("국회","sCtg15");
 	 group[5][3]=new Option("대통령","sCtg16");
@@ -40,7 +40,7 @@
 	 group[5][6]=new Option("정부","sCtg19");
 	 group[5][7]=new Option("행정","sCtg20");
 	 group[5][8]=new Option("정치 일반","sCtg21");
-	 group[6][0]=new Option("세부 분류","sCtg");
+	 group[6][0]=new Option("중분류","sCtg");
 	 group[6][1]=new Option("건설","sCtg22");
 	 group[6][2]=new Option("과학","sCtg23");
 	 group[6][3]=new Option("교통","sCtg24");
@@ -50,7 +50,7 @@
 	 group[6][7]=new Option("부동산","sCtg28");
 	 group[6][8]=new Option("경제 일반","sCtg29");
 	 group[6][9]=new Option("산업 일반","sCtg30");
-	 group[7][0]=new Option("세부 분류","sCtg");
+	 group[7][0]=new Option("중분류","sCtg");
 	 group[7][1]=new Option("가정/결혼","sCtg31");
 	 group[7][2]=new Option("관광","sCtg32");
 	 group[7][3]=new Option("소비","sCtg33");
@@ -59,7 +59,7 @@
 	 group[7][6]=new Option("직장","sCtg36");
 	 group[7][7]=new Option("정보/통신","sCtg37");
 	 group[7][8]=new Option("기타 일반","sCtg38");
-	 group[8][0]=new Option("세부 분류","sCtg");
+	 group[8][0]=new Option("중분류","sCtg");
 	 group[8][1]=new Option("교포/외국인","sCtg39");
 	 group[8][2]=new Option("노인","sCtg40");
 	 group[8][3]=new Option("성인","sCtg41");
@@ -67,7 +67,7 @@
 	 group[8][5]=new Option("장애인","sCtg43");
 	 group[8][6]=new Option("청소년","sCtg44");
 	 group[8][7]=new Option("복지","sCtg45");
-	 group[9][0]=new Option("세부 분류","sCtg");
+	 group[9][0]=new Option("중분류","sCtg");
 	 group[9][1]=new Option("기타","sCtg46");
 	 temp = document.makeForm.smallCategory;
 	 for (m = temp.options.length-1 ; m > 0 ; m--) {//현재 값 지우기
@@ -111,17 +111,13 @@
 	 }
 	 
 	 function valid_Check(){
-		checkForm=document.makeForm;
+		 checkForm=document.makeForm;
 		var today = new Date();
 		var date = today.getDate();
 		var month = today.getMonth()+1;
 		var year = today.getFullYear(); 
 		var hour = today.getHours();
 		var minute = today.getMinutes();
-		if(hour < 10)
-			hour = "0" + String(hour); 
-		if(minute < 10)
-			minute = "0" + String(minute); 
 		
 		today = String(year) + String(month) + String(date) + String(hour) + String(minute);
 		today = parseInt(today);
@@ -158,7 +154,7 @@
 					checkForm.largeCategory.focus();
 					return false;
 				} else if(checkForm.smallCategory.value=="sCtg"){
-					alert("세부 분류란이 비어있습니다.")
+					alert("중분류란이 비어있습니다.")
 					checkForm.smallCategory.focus();
 					return false;
 				} else if(checkForm.largeType.value=="lType"){
@@ -312,48 +308,129 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	<div id="memF_middle" align="middle">
+	<div id="ctgBasic_middle" align="middle">
 		<!-- 메인 section 시작 -->
-		<section style="padding: 6% 0px 6% 0px">
+		<section style="padding: 6% 0px 6% 0px;">
+			<h4 style="color: grey; align: left;">현재 카테고리&lt대분류</h4><br/>
+			<h4 style="color: grey; align: left;">--------------------------------------- 마감임박! ---------------------------------------</h4><br/><br/>
 			<!-- section1 시작 -->
-			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
-				<form method="POST" action="makeWebFormat" name="makeForm" onsubmit="return valid_Check(this);">
-					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
-					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="reschName" class="makeF_date" placeholder="설문조사 이름" style="width: 150px; line-height: 100px;required: required"></b>
-					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
-						<option value="lCtg">대분류</option>
-						<option value="lCtg1">교육</option>
-						<option value="lCtg2">문화</option>
-						<option value="lCtg3">매체</option>
-						<option value="lCtg4">사회</option>
-						<option value="lCtg5">정치</option>
-						<option value="lCtg6">경제/산업</option>
-						<option value="lCtg7">라이프스타일</option>
-						<option value="lCtg8">특수계층조사</option>
-						<option value="lCtg9">기타</option>
-					</select> 
-					<select name="smallCategory" class="dropdown-el" size=1>
-				 		<option value="sCtg">세부 분류</option>
-					</select><br/>
-					<select name="largeType" class="dropdown-el" onchange="typeChange()" required="required" size=1>
-						<option value="lType" selected>유형</option>
-						<option value="lType1">선다형</option>
-						<option value="lType2">서답형</option>
-					</select>
-					<select name="smallType" class="dropdown-el"  required="required" size=1>
-						<option value="sType" selected>세부 유형</option>
-					</select>
-					<b style="font-size: 13px">문항수 <input type="number" name="qAmount"  value="1" class="makeF_date" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)"></b>
-					<div style="margin-top: 1%; vertical-align: middle">
-						<b style="font-size: 13px">시작일 <input type="datetime-local" name="startDate" class="makeF_date">마감일 <input type="datetime-local" name="endDate" class="makeF_date"></b>
-						<div id="makeTag">
-							<input type="text" name="tag" placeholder="검색 태그" style="border: none; width: 60%; line-height: 24px;">
-						</div>
-					</div>
-					<input type="submit" class="makeR_btn" onclick="document.getElementById('make_btn').submit();" value="선택한 툴로 이동" style="margin-top: 8%;">
-				</form>
-			</div>
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0101.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div>
 			<!-- section1 끝-->
+			
+			<!-- section2 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section2 끝-->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section2 끝--><button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section2 끝-->
+			<!-- section3 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0103.jpg" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section3 끝-->
+				
+			<!-- section4 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section4 끝-->
+			
+			<h4 style="color: grey; align: left;">--------------------------------------- 대분류 &lt 세부 분류 ---------------------------------------</h4><br/><br/><br/>
+			<!-- section1 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section1 끝-->
+			
+			<h4 style="color: grey; align: left;">--------------------------------------- 대분류 &lt 세부 분류 ---------------------------------------</h4><br/><br/><br/>
+			<!-- section1 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section1 끝-->
+				
+			<!-- section2 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section2 끝-->
+				
+				<h4 style="color: grey; align: left;">--------------------------------------- 대분류 &lt 세부 분류 ---------------------------------------</h4><br/><br/><br/>
+				<!-- section1 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section1 끝-->
+				
+				<!-- section2 시작 -->
+				<button class="ctgBasic_left" onclick="location.href='participateInfo.html';"><img alt="사진" src="0104.png" height="100%" width="100%"></button><div class="ctgBasic_right">
+					<h5>설문조사명: OOOOOOOOO  /  조사자: OOO</h5>
+					<h5>조사 시작일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>조사 마감일: 20--년 --월 --일  오전(오후)) OO시 OO분</h5>
+					<h5>유형: OO형</h5>
+					<h5>문항 수: --개</h5>
+					<h5>태그: hello world!</h5>
+					<h5>현재 응답자 수: --명</h5>
+				</div><!-- section2 끝-->
 		</section>
 		<!-- 메인 section 끝 -->
 	</div>

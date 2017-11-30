@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">   
+<head>     
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>     
+<title>조사 예시</title>    
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>     
+<script type="text/javascript">       
+google.load('visualization', '1', {packages: ['corechart']});     
+</script>     
+<script type="text/javascript">       
+function drawVisualization() {         
+// Some raw data (not necessarily accurate)
+var data = google.visualization.arrayToDataTable([
+['Month', '그렇다', '아니다'],
+['1번',  20,      30],
+['2번',  25,      30],
+['3번',  45,      40],
+['4번',  42,      60],
+['5번',  42,      60]
+     
+]);
+var options = {
+title : '조사 예시',
+vAxis: {title: "명"},
+hAxis: {title: "번호"},
+seriesType: "bars",
+series: {5: {type: "line"}}
+};
+var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+chart.draw(data, options);
+}
+google.setOnLoadCallback(drawVisualization);
+</script>  
+</head>  
+<body>     
+<div id="chart_div" style="width: 900px; height: 500px;"></div>   
+<table border="1">
+<tr>
+<th>&nbsp&nbsp번호&nbsp&nbsp</th>
+<th>&nbsp&nbsp&nbsp그렇다&nbsp&nbsp&nbsp</th>
+<th>&nbsp&nbsp&nbsp아니다&nbsp&nbsp&nbsp</th>
+</tr>
+
+<tr>
+<td>&nbsp&nbsp&nbsp1번&nbsp&nbsp&nbsp</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp20</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp30</td>
+</tr>
+
+<tr>
+<td>&nbsp&nbsp&nbsp2번</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp25</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp40</td>
+</tr>
+<tr>
+<td>&nbsp&nbsp&nbsp3번</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp45</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp40</td>
+</tr>
+<tr>
+<td>&nbsp&nbsp&nbsp4번</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp42</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp60</td>
+</tr>
+<tr>
+<td>&nbsp&nbsp&nbsp5번</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp42</td>
+<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp60</td>
+</tr>
+
+
+
+
+
+</table>
+</body> 
+</html>
+ 

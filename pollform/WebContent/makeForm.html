@@ -147,11 +147,11 @@
 		else if((endDate-startDate)<30)
 			chkCode = "chkCode2";
 		
-			if(checkForm.reschName.value=="" || checkForm.largeCategory.value=="" || checkForm.smallCategory.value=="" || checkForm.largeType.value=="" || checkForm.smallType.value=="" || checkForm.qAmount.value==""
+			if(checkForm.title.value=="" || checkForm.largeCategory.value=="" || checkForm.smallCategory.value=="" || checkForm.largeType.value=="" || checkForm.smallType.value=="" || checkForm.qAmount.value==""
 					|| checkForm.startDate.value=="" || (startDate < today)|| checkForm.endDate.value=="" || chkCode=="chkCode1" || chkCode=="chkCode2"){
-				if(checkForm.reschName.value==""){
+				if(checkForm.title.value==""){
 					alert("제목란이 비어있습니다.");
-					checkForm.reschName.focus();
+					checkForm.title.focus();
 					return false;
 				} else if(checkForm.largeCategory.value=="lCtg"){
 					alert("대분류란이 비어있습니다.")
@@ -319,7 +319,7 @@
 			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
 				<form method="POST" action="makeWebFormat" name="makeForm" onsubmit="return valid_Check(this);">
 					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
-					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="reschName" class="makeF_date" placeholder="설문조사 이름" style="width: 150px; line-height: 100px;required: required"></b>
+					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="title" class="makeF_date" placeholder="설문조사 이름" style="width: 150px; line-height: 100px;required: required"></b>
 					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
 						<option value="lCtg">대분류</option>
 						<option value="lCtg1">교육</option>

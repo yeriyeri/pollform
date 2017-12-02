@@ -48,7 +48,7 @@ public class GetResearchFormat extends HttpServlet {
 		
 		
 		GetResearch research = new GetResearch();
-		List<String> _research = research.getResearch("lType1", "sType1", "9");
+		List<String> _research = research.getResearch(largeType, smallType, qAmount);
 		
 		request.setAttribute("research", _research);
 		RequestDispatcher view = request.getRequestDispatcher("participateJSP.jsp");

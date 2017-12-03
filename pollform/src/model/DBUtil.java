@@ -163,6 +163,7 @@ public class DBUtil {
 	public static void insertResult(Connection con, String userID, int researchID, int question, String result) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement("UPDATE 참여 SET ?번=? WHERE 참여자ID=? AND 설문지ID=?");
 
 			pstmt.setInt(1, question);
@@ -170,7 +171,8 @@ public class DBUtil {
 			pstmt.setString(3, userID);
 			pstmt.setInt(4, researchID);
 			pstmt.executeUpdate();
-			
+			con.commit();
+			con.setAutoCommit(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -184,6 +186,8 @@ public class DBUtil {
 			String ans2, String ans3, String ans4, String ans5) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
+			con.setAutoCommit(false);
+			
 			pstmt = con.prepareStatement("UPDATE 문항 SET 질문=?, 1번=?, 2번=?, 3번=?, 4번=?, 5번=? WHERE 설문지ID=? AND 문항ID=?");
 			pstmt.setString(1, question);
 			pstmt.setString(2, ans1);
@@ -195,6 +199,8 @@ public class DBUtil {
 			pstmt.setInt(8, questionID);
 			
 			pstmt.executeUpdate();
+			con.commit();
+			con.setAutoCommit(true);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -21,7 +21,7 @@ public class MakeWebTools {
 				try {
 					for (int i = 0; i < amount; i++) {
 						result.add(i, "<div><b>Question " + (i + 1) + ")"
-								+ " <input type=\"text\" class=\"stype\" name=\"questionNumber" + (i + 1) + "\""
+								+ " <input type=\"text\" class=\"stype\" name=\"questionNumber" + (i + 1) + "\">"
 								+ "</b>" + "<br/><br/>① " + "<input type=\"text\" class=\"stype\" name=\"answerNumber"
 								+ (i + 1) + "_1\">" + "<br/>② "
 								+ "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_2\">"
@@ -37,14 +37,14 @@ public class MakeWebTools {
 				try {
 					for (int i = 0; i < amount; i++) {
 						result.add(i, "<div><b>Question " + (i + 1) + ")"
-								+ " <input type=\"text\" class=\"stype\" name=\"questionNumber" + (i + 1) + "\""
+								+ " <input type=\"text\" class=\"stype\" name=\"questionNumber" + (i + 1) + "\">"
 								+ "</b>" + "<br/><br/>① " + "<input type=\"text\" class=\"stype\" name=\"answerNumber"
 								+ (i + 1) + "_1\">" + "<br/>② "
-								+ "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_1\">"
+								+ "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_2\">"
 								+ "<br/>③ " + "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1)
-								+ "_2\">" + "<br/>④ " + "<input type=\"text\" class=\"stype\" name=\"answerNumber"
-								+ (i + 1) + "_3\">" + "<br/>⑤ "
-								+ "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_4\">"
+								+ "_3\">" + "<br/>④ " + "<input type=\"text\" class=\"stype\" name=\"answerNumber"
+								+ (i + 1) + "_4\">" + "<br/>⑤ "
+								+ "<input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_5\">"
 								+ "<br/><br/><br/>" + "</div>");
 						DBUtil.insertQuestion(conn, researchID, i+1, "", null, null, null, null, null);
 					}
@@ -60,7 +60,7 @@ public class MakeWebTools {
 						result.add(i,
 								"<div><b>Question " + (i + 1) + ")"
 										+ " <input type=\"text\" class=\"stype2\" name=\"questionNumber" + (i + 1)
-										+ "\"</b>" + "<br/><br/>"
+										+ "\"></b>" + "<br/><br/>"
 										+ "ans. <input type=\"text\" class=\"stype\" name=\"answerNumber" + (i + 1) + "_1\" onkeyup=\"chkword(this, 20)\">"
 										+ "</div>");
 						DBUtil.insertQuestion(conn, researchID, i+1, "", null, null, null, null, null);
@@ -72,7 +72,7 @@ public class MakeWebTools {
 				try {
 					for (int i = 0; i < amount; i++) {
 						result.add(i, "<div><b>Question " + (i + 1) + ")"
-								+ " <input type=\"text\" class=\"stype2\" name=\"questionNumber" + (i + 1) + "\"</b>"
+								+ " <input type=\"text\" class=\"stype2\" name=\"questionNumber" + (i + 1) + "\"></b>"
 								+ "<br/><br/>" + "ans. <input type=\"textarea\" class=\"stype\" name=\"answerNumber" + (i+1)+ "_1\">"
 								+ "</div>");
 						DBUtil.insertQuestion(conn, researchID, i+1, "", null, null, null, null, null);

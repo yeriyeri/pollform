@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DBUtil {
 	public static ResultSet findResearchID(Connection con, String editor, String title, String largeCtg,
 			String smallCtg, String largeType, String smallType, String tag) {
-		String sqlSt = "SELECT ID FROM 설문지 WHERE 작성자=";
+		String sqlSt = "SELECT 설문지ID FROM 설문지 WHERE 작성자=";
 
 		Statement st;
 		try {
@@ -26,6 +26,57 @@ public class DBUtil {
 		return null;
 	}
 
+	public static ResultSet findResearchType(Connection con, int researchID) {
+		String sqlSt = "SELECT 세부유형 FROM 설문지 WHERE 설문지ID=";
+
+		Statement st;
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			if (st.execute(sqlSt + "'" + researchID + "'")) {
+				return st.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ResultSet findColumnMax(Connection con) {
+		String sqlSt = "SELECT * FROM 참여";
+
+		PreparedStatement pstmt;
+		try {
+			pstmt = con.prepareStatement(sqlSt);
+
+			if (pstmt.execute(sqlSt)) {
+				return pstmt.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ResultSet findqAmount(Connection con) {
+		String sqlSt = "SELECT 문항수 FROM 설문지";
+
+		PreparedStatement pstmt;
+		try {
+			pstmt = con.prepareStatement(sqlSt);
+
+			if (pstmt.execute(sqlSt)) {
+				return pstmt.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static void insertResearch(Connection con, String editor, String title, String largeCtg, String smallCtg,
 			String largeType, String smallType, String qAmount, String startDate, String endDate, String tag)
 			throws SQLException {
@@ -87,7 +138,50 @@ public class DBUtil {
 		}
 	}
 
-	public static void updateQuestion(Connection con, int researchID, int questionID, String question, String ans1, String ans2, String ans3, String ans4, String ans5) throws SQLException {
+	public static void insertResultInfo(Connection con, String userID, int researchID) throws SQLException {
+		Statement stmt = null;
+		try {
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			ResultSet uprs = stmt.executeQuery("SELECT * FROM 참여");
+
+			uprs.moveToInsertRow();
+			
+			uprs.updateString("참여자ID", userID);
+			uprs.updateInt("설문지ID", researchID);
+			uprs.insertRow();
+			uprs.beforeFirst();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
+	
+	public static void insertResult(Connection con, String userID, int researchID, int question, String result) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement("UPDATE 참여 SET ?번=? WHERE 참여자ID=? AND 설문지ID=?");
+
+			pstmt.setInt(1, question);
+			pstmt.setString(2, result);
+			pstmt.setString(3, userID);
+			pstmt.setInt(4, researchID);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	public static void updateQuestion(Connection con, int researchID, int questionID, String question, String ans1,
+			String ans2, String ans3, String ans4, String ans5) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement("UPDATE 문항 SET 질문=?, 1번=?, 2번=?, 3번=?, 4번=?, 5번=? WHERE 설문지ID=? AND 문항ID=?");
@@ -97,16 +191,51 @@ public class DBUtil {
 			pstmt.setString(4, ans3);
 			pstmt.setString(5, ans4);
 			pstmt.setString(6, ans5);
-			pstmt.setInt(7, researchID);;
-			pstmt.setInt(8, questionID);;
+			pstmt.setInt(7, researchID);
+			pstmt.setInt(8, questionID);
 			
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			if (pstmt != null) {
 				pstmt.close();
+			}
+		}
+	}
+
+	public static ResultSet getResearch(Connection con, int researchID) {
+		String sqlSt = "SELECT 질문, 1번, 2번, 3번, 4번, 5번 FROM 문항 WHERE 설문지ID='";
+		Statement st;
+
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			if (st.execute(sqlSt + researchID + "'")) {
+				return st.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void alterTable(Connection con, int columnSize, int colMax) throws SQLException {
+		Statement stmt = null;
+		try {
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			for(int i = colMax; i < columnSize; i++) {
+				String num = (i+1) + "번";
+			stmt.execute("ALTER TABLE 참여 ADD " + num + " VARCHAR(45) NOT NULL");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (stmt != null) {
+				stmt.close();
 			}
 		}
 	}

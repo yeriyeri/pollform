@@ -165,7 +165,7 @@
 		</section>
 		<!-- section2 시작 -->
 		<section> 
-			<form action="participateResult.html" >
+			<form method="POST" action="dbParticipate" >
 			<%
 				if (request.getAttribute("research") != null) {
 					List tools = (List) request.getAttribute("research");

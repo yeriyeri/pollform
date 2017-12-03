@@ -46,46 +46,51 @@ public class DBResearch extends HttpServlet {
 
 		ServletContext sc = getServletContext();
 		Connection conn = (Connection) sc.getAttribute("DBconnection");
-		
-//		if(conn == null)
-//			System.out.println("conn2 null");
-//		else
-//			System.out.println("conn2 not null");
+
+		// if(conn == null)
+		// System.out.println("conn2 null");
+		// else
+		// System.out.println("conn2 not null");
+
+		int innerAmount = 0;
+		String sType = (String) session.getAttribute("smallType");
+
+		// 4지선다
+		if (sType.equals("sType1"))
+			innerAmount = 4;
+		else if (sType.equals("sType2")) // 5지선다
+			innerAmount = 5;
+		else // 서답형
+			innerAmount = 1;
 
 		for (int i = 0; i < Integer.parseInt(session.getAttribute("qAmount").toString()); i++) {
-			String question = (String)request.getParameter("questionNumber" + (i + 1));
-//			System.out.println( question + "\n");
-			int innerAmount = 1;
-			String sType  = (String) session.getAttribute("smallType");
-
-			// 4지선다
-			if(sType.equals("sType1"))
-				innerAmount = 4;
-			else if(sType.equals("sType2")) //5지선다
-				innerAmount = 5;
-			else // 서답형
-				innerAmount = 1;
-			
+			String question = (String) request.getParameter("questionNumber" + (i + 1));
+//			System.out.println("문항 번호: " + question);
 			String[] answers = new String[5];
-			if(innerAmount == 4)
+			if (innerAmount == 4)
 				answers[4] = null;
-			else if(innerAmount < 4) {
-				answers[1] = null; answers[2] = null; answers[3] = null; answers[4] = null;
-				}
-			
-			for(int j = 0; j < innerAmount; j++) {
-				answers[j] = (String) request.getParameter("answerNumber" + (i+1) + "_" + (j+1));
-			//System.out.println(answers[j]);
+			else if (innerAmount < 4) {
+				answers[1] = null;
+				answers[2] = null;
+				answers[3] = null;
+				answers[4] = null;
 			}
-			
+
+			for (int j = 0; j < innerAmount; j++) {
+				answers[j] = (String) request.getParameter("answerNumber" + (i + 1) + "_" + (j + 1));
+//				System.out.println("답" + (j+1) + ": " + answers[j]);
+			}
+
 			try {
-				DBUtil.updateQuestion(conn, Integer.parseInt(session.getAttribute("researchID").toString()), (i+1), question, answers[0], answers[1], answers[2], answers[3], answers[4]);
+				DBUtil.updateQuestion(conn, Integer.parseInt(session.getAttribute("researchID").toString()), (i + 1),
+						question, answers[0], answers[1], answers[2], answers[3], answers[4]);
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		//System.out.println( "researchID: " + session.getAttribute("researchID") + " qAmount: " + session.getAttribute("qAmount"));
+		// System.out.println( "researchID: " + session.getAttribute("researchID") + "
+		// qAmount: " + session.getAttribute("qAmount"));
 		RequestDispatcher view = request.getRequestDispatcher("makeFormResult.html");
 		view.forward(request, response);
 	}

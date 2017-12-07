@@ -20,7 +20,7 @@ import model.DBUtil;
 /**
  * Servlet implementation class DBResearch
  */
-@WebServlet("/dbResearch")
+@WebServlet("/dbResearch.do")
 public class DBResearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

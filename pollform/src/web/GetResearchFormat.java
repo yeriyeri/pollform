@@ -23,10 +23,10 @@ import model.DBUtil;
 /**
  * Servlet implementation class GetResearchFormat
  */
-@WebServlet("/getResearchFormat")
+@WebServlet("/getResearchFormat.do")
 public class GetResearchFormat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	int numID = 1;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -53,7 +53,7 @@ public class GetResearchFormat extends HttpServlet {
 
 		// 참여자ID
 		// String userID = (String) request.getParameter("userID");
-		String userID = "참여자";
+		String userID = "참여자" + (numID++);
 
 		HttpSession session = request.getSession();
 		session.setAttribute("researchID", researchID);
@@ -73,7 +73,8 @@ public class GetResearchFormat extends HttpServlet {
 		ResultSet rs = DBUtil.getResearch(conn, researchID);
 		ResultSet rsType = DBUtil.findResearchType(conn, researchID);
 		int size = 0;
-
+		int qAmount = 0;
+		
 		if (rsType != null) {
 			try {
 				while (rsType.next()) {
@@ -83,12 +84,16 @@ public class GetResearchFormat extends HttpServlet {
 						size = 5;
 					else
 						size = 1;
+					// 문항수
+					qAmount = Integer.parseInt(rsType.getString(2));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+//		System.out.println("참여자: " + userID + "\n문항수: " + qAmount);
+		session.setAttribute("qAmount", qAmount);
 		int rowSize = 1;
 		List<String> result = new ArrayList<String>();
 		String[] answers = new String[size];
@@ -137,9 +142,10 @@ public class GetResearchFormat extends HttpServlet {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
-
+		int curNum = 0;
+		session.setAttribute("curNum", curNum);
 		session.setAttribute("rowSize", rowSize - 1);
-		request.setAttribute("research", result);
+		session.setAttribute("research", result);
 		RequestDispatcher view = request.getRequestDispatcher("participateJSP.jsp");
 		view.forward(request, response);
 	}

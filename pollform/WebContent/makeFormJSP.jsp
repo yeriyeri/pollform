@@ -165,7 +165,7 @@
 		</section>
 		<!-- section2 시작 -->
 		<section> 
-			<form method="POST" action="dbResearch" >
+			<form method="POST" action="dbResearch.do" >
 			<%
 				if (request.getAttribute("tools") != null) {
 					List tools = (List) request.getAttribute("tools");

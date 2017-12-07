@@ -23,7 +23,7 @@ import model.MakeWebTools;
 /**
  * Servlet implementation class MakeWebFormat
  */
-@WebServlet("/makeWebFormat")
+@WebServlet("/makeWebFormat.do")
 public class MakeWebFormat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

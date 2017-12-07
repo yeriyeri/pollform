@@ -27,7 +27,7 @@ public class DBUtil {
 	}
 
 	public static ResultSet findResearchType(Connection con, int researchID) {
-		String sqlSt = "SELECT 세부유형 FROM 설문지 WHERE 설문지ID=";
+		String sqlSt = "SELECT 세부유형, 문항수 FROM 설문지 WHERE 설문지ID=";
 
 		Statement st;
 		try {

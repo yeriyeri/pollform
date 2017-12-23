@@ -5,8 +5,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 public class DBUtil {
+	public static ResultSet researchList(Connection con) {
+		String sqlSt = "SELECT 설문지ID, 작성자, 제목, 대분류, 세부분류, 유형, 세부유형, 문항수, 시작일, 마감일, 검색태그 FROM 설문지 ";
+
+		Date today = new Date();
+		Statement st;
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			if (st.execute(sqlSt + "ORDER BY 설문지ID ASC")) {
+				return st.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public static ResultSet findResearchID(Connection con, String editor, String title, String largeCtg,
 			String smallCtg, String largeType, String smallType, String tag) {
 		String sqlSt = "SELECT 설문지ID FROM 설문지 WHERE 작성자=";

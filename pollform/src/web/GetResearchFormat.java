@@ -49,7 +49,7 @@ public class GetResearchFormat extends HttpServlet {
 		// 설문지ID
 		// int researchID =
 		// Integer.parseInt(request.getParameter("researchID").toString());
-		int researchID = 119;
+		int researchID = 121;
 
 		// 참여자ID
 		// String userID = (String) request.getParameter("userID");
@@ -92,7 +92,7 @@ public class GetResearchFormat extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-//		System.out.println("참여자: " + userID + "\n문항수: " + qAmount);
+		System.out.println("참여자: " + userID + "\n문항수: " + qAmount);
 		session.setAttribute("qAmount", qAmount);
 		int rowSize = 1;
 		List<String> result = new ArrayList<String>();

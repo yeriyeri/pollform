@@ -1,3 +1,7 @@
+<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +10,16 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body class="index">
+<%
+request.setCharacterEncoding("utf-8"); 
+
+
+
+
+
+String id = request.getParameter("id");
+
+%>
 	<!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
@@ -117,45 +131,35 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
+	<div class="index_middle">
+			<!-- 메인 section 시작 -->
+			<section class="index_article" align="middle">
+				<!-- section1 시작 -->
+				<div id="ind_article1"></div>
+				<!-- section1 끝-->
+				<!-- section2 시작 -->
+				<div style="background-color: white; border: 1px solid grey; height: 100px"></div><!-- section2 끝-->
+			</section>
+			<!-- 메인 section 끝 -->
+
+			<!-- 로그인, 로그인 밑 section 시작 -->
+			<section class="index_Banner" align="middle">
+				<div class="user_login" align="middle">
+						<table>
+							<tr><td style="font-size: 15px;" colspan="2"><b style="color: grey;"><%=id %></b> 님 안녕하세요!&nbsp&nbsp&nbsp&nbsp<a href="index.html" style="text-decoration: underline; color: grey; font-weight: bold; font-size: 14px; background-color: #F3F7F9;">로그아웃</a></td></tr>
+							<tr><td><form method="POST" action="mypage.html">
+								<input type="submit" id="user_mine" value="내 설문조사 바로가기">
+								</form>
+							</td>
+							<td><form method="POST" action="makeForm.html">
+								<input type="submit" id="user_mine" value="설문조사 작성하기">
+								</form></td></tr>
+						</table>
+					<div>
+					</div>
+				</div>	
+			</section>
+			<!-- 로그인, 로그인 밑 section 끝 -->
 		</div>
-	</div>
-	
 </body>
 </html>

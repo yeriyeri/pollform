@@ -1,12 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
-</head>
-<body class="index">
-	<!-- 공통 부분-->
+ 
+
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+ <%@ page session="true" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <link rel="stylesheet" type="text/css" href="mystyle.css" />
+ <title>회원확인</title>
+ </head>
+
+<body>
+
+<%
+  String id = request.getParameter("id");
+  String pw = request.getParameter("passwd");
+  
+
+ Connection conn = null;
+  Statement stmt = null;
+  ResultSet rs = null;
+  Boolean isLogin = false;
+  
+  try{
+    Class.forName("com.mysql.jdbc.Driver");
+    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pollform","root","401sql");
+    
+    stmt = (Statement) conn.createStatement();
+    // 현재 페이지의 글 가져오기
+   rs = stmt.executeQuery("select * from member where id='" + id + "' and passwd='" + pw + "'" );
+    while( rs.next() )
+    {
+     session.setMaxInactiveInterval(3600);
+     session.setAttribute( "id", "true" );
+     
+     out.println("<script>alert('로그인되었습니다!!');</script>");
+     isLogin = true;
+     %>
+               <!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
 				<tr>
@@ -117,45 +148,72 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
-	</div>
-	
+	<div class="index_middle">
+			<!-- 메인 section 시작 -->
+			<section class="index_article" align="middle">
+				<!-- section1 시작 -->
+				<div id="ind_article1"></div>
+				<!-- section1 끝-->
+				<!-- section2 시작 -->
+				<div style="background-color: white; border: 1px solid grey; height: 100px"></div><!-- section2 끝-->
+			</section>
+			<!-- 메인 section 끝 -->
+
+			<!-- 로그인, 로그인 밑 section 시작 -->
+			<section class="index_Banner" align="middle">
+				<div class="user_login" align="middle">
+						<table>
+							<tr><td style="font-size: 15px;" colspan="2"><b style="color: grey;"><%=id %></b> 님 안녕하세요!&nbsp&nbsp&nbsp&nbsp<a href="index.html" style="text-decoration: underline; color: grey; font-weight: bold; font-size: 14px; background-color: #F3F7F9;">로그아웃</a></td></tr>
+							<tr><td><form method="POST" action="mypage.html">
+								<input type="submit" id="user_mine" value="내 설문조사 바로가기">
+								</form>
+							</td>
+							<td><form method="POST" action="makeForm.html">
+								<input type="submit" id="user_mine" value="설문조사 작성하기">
+								</form></td></tr>
+						</table>
+					<div>
+					</div>
+				</div>	
+			</section>
+			<!-- 로그인, 로그인 밑 section 끝 -->
+		</div>  
+               
+                 <%
+    }
+    
+    if( !isLogin )
+    {
+    	out.println("<script>alert('정보 불일치!!');history.back();</script>");
+
+     %>
+                    
+                 <%
+    }
+   }
+   
+   catch(ClassNotFoundException cnfe){
+    out.println("해당 클래스를 찾을 수 없습니다." + cnfe.getMessage());
+   }
+   
+   catch(SQLException se){
+    out.println(se.getMessage());
+   }
+   
+  
+ %>
+
 </body>
-</html>
+ </html>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

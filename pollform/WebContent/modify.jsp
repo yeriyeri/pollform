@@ -1,12 +1,17 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" import="java.sql.*"%>
+    <%
+    request.setCharacterEncoding("utf-8");%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body class="index">
-	<!-- 공통 부분-->
+
+<!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
 				<tr>
@@ -117,45 +122,50 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
+
+		<div>
+<%
+
+String id = request.getParameter("id");
+String pw = request.getParameter("passwd");
+
+
+Connection conn = null;
+Statement stmt = null;
+ResultSet rs = null;
+Boolean isLogin = false;
+
+try{
+  Class.forName("com.mysql.jdbc.Driver");
+  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pollform","root","401sql");
+  
+  stmt = (Statement) conn.createStatement();
+  // 현재 페이지의 글 가져오기
+ rs = stmt.executeQuery("select * from member where id='" + id +"'" );
+while(rs.next()){ 
+%>
+
+
+                        <button onClick="location.href='CHANGEPROFILE_PW.jsp'">
+                            변경
+                        </button>
+
+<%
+}
+}
+catch(Exception e){
+	out.println("db연동 실패");
 	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
-	</div>
-	
+}
+
+%>
+
+
+
+</div>
+
+
+
+
 </body>
 </html>

@@ -1,11 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
+<%@ page import="check.SearchService" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body class="index">
+
+<%
+request.setCharacterEncoding("utf-8");
+
+String name=request.getParameter("name");
+String phone = request.getParameter("phone");
+String Phone=phone;
+SearchService searchService = SearchService.getInstance();
+
+String id = searchService.searchId(name,phone);
+
+
+
+%>
+
+
 	<!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
@@ -117,45 +136,31 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
+	<div id="memR_middle" align="middle">
+		<!-- 메인 section 시작 -->
+		<section>
+			<!-- section1 시작 --><br/></br>
+			<div style="color: grey; background-color: white; border: 1px solid grey; height: auto; width: 70%; padding-bottom: 5%;">
+				<br/><br/>
+				<h3>&lt아이디 찾기&gt</h3><br/>
+				<h5 style=""><%if(name!= null){ %>
+   
+      <%=name%>님의 아이디는  <%=id%>입니다.</h5><br/> 
+
+ <%} else{%>
+				<h5 style="color: red">입력한 정보와 일치하는 사용자가 존재하지 않습니다.</h5><br/>      <%} %>
+				<button class="makeR_btn"><a href="index.html">메인으로 이동</a></button>
+				<button class="makeR_btn"><a href="findIdpw.jsp">아이디/비밀번호 찾기로 이동</a></button>
+			</div>
+			<!-- section1 끝-->
+		</section>
+		<!-- 메인 section 끝 -->
 	</div>
-	
+</head>
+
+
+  
+
 </body>
 </html>
+

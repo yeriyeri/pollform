@@ -1,11 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" import="java.sql.*"%>
+    <%
+    request.setCharacterEncoding("utf-8");%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body class="index">
+
 	<!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
@@ -118,44 +123,54 @@
 	</div>
 	<!-- 공통 부분 끝 -->
 	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
+	
+	
+
+<%
+
+
+try{
+	String driver="com.mysql.jdbc.Driver";
+	Class.forName(driver);
+	String url="jdbc:mysql://localhost:3306/pollform";
+	String id="root";
+	String pw="401sql";
+	Connection conn=DriverManager.getConnection(url,id,pw);
+	
+	Statement st=conn.createStatement();
+	
+	String sql="select * from member where id='"+session.getAttribute("id")+"'";
+	st.executeUpdate(sql);
+	ResultSet rs=st.executeQuery(sql);
+	
+while(rs.next()){ 
+%>
+
+
+		<div><form method="POST" action="modify.jsp">
+		<input type="submit" value="수정" id="member_btn"></form>
 		<br>
 		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
-	</div>
+		<input type="submit"value="탈퇴" id="member_btn"></form></div>
 	
+
+
+
+<%
+}
+}
+catch(Exception e){
+	out.println("db연동 실패");
+	
+}
+
+%>
+
+
+
+
+
+
+
 </body>
 </html>

@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
+<title>Insert title here</title>
 </head>
 <body class="index">
 	<!-- 공통 부분-->
@@ -117,45 +119,35 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
+	<div id="memR_middle" align="middle">
+		<!-- 메인 section 시작 -->
+		<section>
+			<!-- section1 시작 --><br/></br>
+			<div style="color: grey; background-color: white; border: 1px solid grey; height: auto; width: 70%; padding-bottom: 5%;">
+				<br/><br/>
+				<h3>아이디/ 비밀번호 찾기입니다!</h3>
+				<br/><br/>
+				<div class="findIDPW">
+ 				<form method="POST" action="viaId.jsp">
+					<h5>아이디를 찾으려면 다음을 입력하세요</h5>
+					<h5>이름: <input type="text" name="name"></h5>
+					<h5>전화번호: <input type="text" name="phone"></h5>
+					<button class="makeR_btn" width="">아이디 찾기</a></button>
+				</form>
+				</div>
+				<div class="findIDPW">
+				<form method="POST" action="viaPw.jsp"> 
+					<h5>비밀번호를 찾으려면 다음을 입력하세요</h5>
+					<h5>아이디: <input type="text" name="id"></h5>
+					<h5>전화번호: <input type="text" name="phone"></h5>
+					<button class="makeR_btn" width="">비밀번호 찾기</a></button>
+			</form> 
+				</div>
+			</div>
+			<!-- section1 끝-->
+		</section>
+		<!-- 메인 section 끝 -->
 	</div>
-	
+
 </body>
 </html>

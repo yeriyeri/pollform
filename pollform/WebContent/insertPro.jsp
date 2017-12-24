@@ -1,11 +1,63 @@
-<!DOCTYPE html>
+<%@ page import="java.sql.*" %>
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Poll Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
+<title>Insert title here</title>
 </head>
 <body class="index">
+<%
+
+request.setCharacterEncoding("utf-8");
+String id = request.getParameter("id");
+String passwd = request.getParameter("passwd");
+String name = request.getParameter("name");
+String birth = request.getParameter("birth");
+String passwd_check=request.getParameter("passwd_check");
+String phone = request.getParameter("phone");
+
+
+
+
+Timestamp register = new Timestamp(System.currentTimeMillis());
+Connection con = null;
+String url="jdbc:mysql://localhost:3306/pollform";
+String user="root";
+String pwd="401sql";
+PreparedStatement pstmt=null; 
+String sql="";
+
+
+try{
+
+Class.forName("com.mysql.jdbc.Driver");
+
+con=DriverManager.getConnection(url,user,pwd);
+
+sql="insert into member(id,passwd,name,birth,phone) values(?,?,?,?,?)";
+pstmt=con.prepareStatement(sql);
+pstmt.setString(1, id);
+pstmt.setString(2, passwd);
+pstmt.setString(3, name);
+pstmt.setString(4, birth);
+pstmt.setString(5, phone);
+
+
+pstmt.executeUpdate(); //insert,update,delete
+
+}catch(Exception e){
+e.printStackTrace();
+}finally{
+if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+if(con!=null)try{con.close();}catch(SQLException ex){}
+}
+
+%>
+
 	<!-- 공통 부분-->
 	<div class="index_top" display="block">
 			<table  align="right" class="index_topSrc">
@@ -117,45 +169,20 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	
-		<div class="membership_middle" align="middle">
-		<div class="membership_input">
-		 <tr>
-		<td>
-		<form action="updatePro1.jsp" method="post">
-		<input type="submit" value="비밀번호 수정" id="member_btn"></form>
-		</td>
-		</tr> 
-		
-		<tr>
-		<td>
-			<form action="updatePro.jsp" method="post">
-		<input type="submit" value="이름 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		
-			<form action="updatePro2.jsp" method="post">
-		<input type="submit" value="생년월일 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<form action="updatePro3.jsp" method="post">
-		<input type="submit" value="전화번호 수정" id="member_btn"></form>
-		</td>
-		</tr>
-		
-		<tr>
-		<td>
-		<br>
-		<form method="POST" action="modify_first.jsp">
-		<input type="submit"value="탈퇴" id="member_btn"></form>
-		</td>
-		</tr>
-		</div>
+	<div id="memR_middle" align="middle">
+		<!-- 메인 section 시작 -->
+		<section style="padding: 6% 0px 0px 0px">
+			<!-- section1 시작 -->
+			<div style="color: grey; background-color: white; border: 1px solid grey; height: 350px; width: 70%;">
+				<br/><br/><br/>
+				<h2>회원가입을 축하합니다!</h2>
+				<p>가입이 완료되었습니다.</p>
+				<br/><br/>
+				<form method="POST" action="index.html"><input type="submit" id="member_btn" value="메인으로 이동"></form>
+			</div>
+			<!-- section1 끝-->
+		</section>
+		<!-- 메인 section 끝 -->
 	</div>
-	
 </body>
 </html>

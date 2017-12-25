@@ -1,160 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, model.DBUtil"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<link rel="stylesheet" type="text/css" href="my_style.css" />
+<link type="text/css" rel="stylesheet" href="normalize.css" />
+<link type="text/css" rel="stylesheet" href="mystyle.css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./js/jquery.carouFredSel-5.5.0-packed.js"></script>
+<script type="text/javascript" src="./js/flow_banner.js"></script>
 
 </head>
-<body class="index">
+<body>
+	<header>
+	<div class="row align">
 
-	<!-- °øÅë ºÎºĞ-->
-	<div class="index_top" display="block">
-			<table  align="right" class="index_topSrc">
-				<tr>
-					<td style="border: none">
-						<input type="text" name="tagSrc" placeholder="&nbsp&nbspÅÂ±× °Ë»ö" style="line-height: 17px;">
-					</td>
-					<td style="border: none">
-						<input type="submit" value="°Ë»ö" style="margin-left: -6px; border: none; height: 23px; color: white; background-color: #4d4d4d">
-					</td>
-				</tr>
-			</table>
-		<header>
-			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
-		</header>
-		<!-- ¸Ş´º ½ÃÀÛ -->
-		<div class="menu">
-			<nav id="topMenu" style="width: 1110px; margin:0 auto;">
-				<ul style="float: left; text-align: center;">
-					<li class="topMenuLi" style="display: inline-block; text-align: center;"><a class="menuLink" href="categoryBasicL.html">±³À°</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">ÇĞ±³ ±³À°</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">±³À° ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">¹®È­</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">¹®ÇĞ µµ¼­</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¼ø¼ö¿¹¼ú</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¿µÈ­/°¡¿ä/¿¬¿¹</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">¹®È­ ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">¸ÅÃ¼</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">TV</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¶óµğ¿À</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">½Å¹®</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">±âÅ¸ ¸ÅÃ¼</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">»çÈ¸</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">º¹Áö</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">ÀÚ¿¬/È¯°æ</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">»çÈ¸ ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">Á¤Ä¡</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">±¹¹æ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">±¹È¸</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">´ëÅë·É</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">»ç¹ı/Ä¡¾È</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Á¤´ç</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Á¤ºÎ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">ÇàÁ¤</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">Á¤Ä¡ ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">°æÁ¦/»ê¾÷</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">°Ç¼³</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">°úÇĞ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">±³Åë</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">±İÀ¶</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">±â¾÷</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">´ë¿Ü°æÁ¦/¹«¿ª</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">ºÎµ¿»ê</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">°æÁ¦ ÀÏ¹İ</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">»ê¾÷ ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">¶óÀÌÇÁ½ºÅ¸ÀÏ</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">°¡Á¤/°áÈ¥</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">°ü±¤</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¼Òºñ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¿©°¡</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Á¤º¸</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Á÷Àå</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Á¤º¸/Åë½Å</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">±âÅ¸ ÀÏ¹İ</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">Æ¯¼ö°èÃşÁ¶»ç</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">±³Æ÷/¿Ü±¹ÀÎ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">³ëÀÎ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¼ºÀÎ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">¾Æµ¿</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Àå¾ÖÀÎ</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">Ã»¼Ò³â</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">º¹Áö</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">±âÅ¸</a></li>
-				</ul>
-			</nav>
-		</div>
-		<!-- ¸Ş´º ³¡ -->
+	<form method="post" action="tag_result.jsp">
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for..." name="tagSrc"> 
+				<span class="input-group-btn"> <input type="button"
+					class="btn btn-primary" value="ê²€ìƒ‰">
+				</span>
+			</div>
+		</form>
+		
+		<a class="nav-link" href="login.jsp">LogIn</a>
 	</div>
-	<!-- °øÅë ºÎºĞ ³¡ -->
+	<a href="home.html"
+		style="text-align: center; font-size: 1rem; text-align: left;"><h2>
+			&nbspStart Poll Form!
+			<h2></a> </header>
+			
+	
 	<div class="membership_middle" align="middle">
 		<div class="membership_input">
 		  <form method="POST" action="insertPro.jsp" name="userInfo" onsubmit="return checkValue()">
 				<table>
 					<tr>
-						<td><input class="mi_input" type="text" placeholder="¾ÆÀÌµğ" name="id">
+						<td><input class="mi_input" type="text" placeholder="ì•„ì´ë””" name="id">
 						<input class="mi_input" type="button" id="mi_btn"
-							name="Áßº¹¹æÁö" value="»ç¿ë°¡´É IDÈ®ÀÎ" onClick="javascript:checkId();"></td>
+							name="ì¤‘ë³µë°©ì§€" value="ì‚¬ìš©ê°€ëŠ¥ IDí™•ì¸" onClick="javascript:checkId();"></td>
 						
 					</tr>
 					<tr>
-						<td><input class="mi_input" type="text" placeholder="ºñ¹Ğ¹øÈ£" name="passwd"></td>
+						<td><input class="mi_input" type="text" placeholder="ë¹„ë°€ë²ˆí˜¸" name="passwd"></td>
 					</tr>
 					<tr>
 						<td><input class="mi_input" type="text" name="passwd_check"
-							placeholder="ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ"></td>
+							placeholder="ë¹„ë°€ë²ˆí˜¸ ì¬í™•ì¸"></td>
 					</tr>
 				
 	
 					<tr>
-						<td><input class="mi_input2" type="text" placeholder="ÀÌ¸§"  name="name"></td>
+						<td><input class="mi_input2" type="text" placeholder="ì´ë¦„"  name="name"></td>
 						
 					</tr>
 					<tr>
-						<td><input class="mi_input2" type="text" placeholder="»ı³â¿øÀÏ"  name="birth"></td>
+						<td><input class="mi_input2" type="text" placeholder="ìƒë…„ì›ì¼"  name="birth"></td>
 					</tr>
 					<tr>
 						<td><input class="mi_input2" type="text"
-							placeholder="¿¬¶ôÃ³"  name="phone"></td>
+							placeholder="ì—°ë½ì²˜"  name="phone"></td>
 					</tr>
 				</table>
 				
 	
-	<div>	<input type="submit" value="°¡ÀÔ" id="member_btn"> </div>
+	<div>	<input type="submit" value="ê°€ì…" id="member_btn"> </div>
 		</form>
 			</div>
 	</div>
@@ -164,11 +80,11 @@
 <script type="text/javascript">
 
 function checkValue(){
-	if(!document.userInfo.id.value){ alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ½Ã¿À"); return false;}
-	else if(!document.userInfo.passwd.value) {alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À");return false;}
-	else if(!document.userInfo.name.value){ alert("»ç¿ëÀÚ ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À");return false;}
+	if(!document.userInfo.id.value){ alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹œì˜¤"); return false;}
+	else if(!document.userInfo.passwd.value) {alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤");return false;}
+	else if(!document.userInfo.name.value){ alert("ì‚¬ìš©ì ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤");return false;}
 	else if(document.userInfo.passwd.value != document.userInfo.passwd_check.value){
-	        alert("ºñ¹Ğ¹øÈ£¸¦ µ¿ÀÏÇÏ°Ô ÀÔ·ÂÇÏ¼¼¿ä.");
+	        alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë™ì¼í•˜ê²Œ ì…ë ¥í•˜ì„¸ìš”.");
 	        return false;
 	      }
 	

@@ -1,16 +1,31 @@
- 
 
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+	
+<%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
  <%@ page session="true" %>
+	
+<%@ page import="java.sql.*, model.DBUtil"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="my_style.css" />
+<link type="text/css" rel="stylesheet" href="normalize.css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./js/jquery.carouFredSel-5.5.0-packed.js"></script>
+<script type="text/javascript" src="./js/flow_banner.js"></script>
+</head>
+<style>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
- <link rel="stylesheet" type="text/css" href="mystyle.css" />
- <title>회원확인</title>
- </head>
+#mi_btn { background-color: #FFFFFF; border: 0.5px solid #4d4d4d; height: 50%;}
 
+</style>
 <body>
+
+
+
 
 <%
   String id = request.getParameter("id");
@@ -37,149 +52,81 @@
      out.println("<script>alert('로그인되었습니다!!');</script>");
      isLogin = true;
      %>
-               <!-- 공통 부분-->
-	<div class="index_top" display="block">
-			<table  align="right" class="index_topSrc">
-				<tr>
-					<td style="border: none">
-						<input type="text" name="tagSrc" placeholder="&nbsp&nbsp태그 검색" style="line-height: 17px;">
-					</td>
-					<td style="border: none">
-						<input type="submit" value="검색" style="margin-left: -6px; border: none; height: 23px; color: white; background-color: #4d4d4d">
-					</td>
-				</tr>
-			</table>
-		<header>
-			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
-		</header>
-		<!-- 메뉴 시작 -->
-		<div class="menu">
-			<nav id="topMenu" style="width: 1110px; margin:0 auto;">
-				<ul style="float: left; text-align: center;">
-					<li class="topMenuLi" style="display: inline-block; text-align: center;"><a class="menuLink" href="categoryBasicL.html">교육</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">학교 교육</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">교육 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">문화</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">문학 도서</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">순수예술</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">영화/가요/연예</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">문화 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">매체</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">TV</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">라디오</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">신문</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 매체</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">사회</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">복지</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">자연/환경</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">사회 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">정치</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">국방</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">국회</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">대통령</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">사법/치안</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">정당</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">정부</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">행정</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">정치 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">경제/산업</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">건설</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">과학</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">교통</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">금융</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">기업</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">대외경제/무역</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">부동산</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">경제 일반</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">산업 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">라이프스타일</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">가정/결혼</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">관광</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">소비</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">여가</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">정보</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">직장</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">정보/통신</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">특수계층조사</a>
-						<ul class="submenu">
-							<li><a href="categoryBasicS.html" class="submenuLink">교포/외국인</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">노인</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">성인</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">아동</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">장애인</a></li>
-							<li><a href="categoryBasicS.html" class="submenuLink">청소년</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">복지</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="categoryBasicL.html">기타</a></li>
-				</ul>
-			</nav>
-		</div>
-		<!-- 메뉴 끝 -->
+     
+     
+     
+	<header>
+	<div class="row align">
+	<a class="nav-link" >	<%=id %></b> 님 안녕하세요!&nbsp&nbsp&nbsp&nbsp</a>
+		<form method="post" action="tag_result.jsp">
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for...">
+				<span class="input-group-btn"> <input type="submit"
+					class="btn btn-primary" value="검색">
+				</span>
+			</div>
+		</form>
+		
+		<a class="nav-link" href="mypage.jsp">mypage</a>
+			<a class="nav-link" href="index.jsp">LogOut</a>
 	</div>
-	<!-- 공통 부분 끝 -->
-	<div class="index_middle">
-			<!-- 메인 section 시작 -->
-			<section class="index_article" align="middle">
-				<!-- section1 시작 -->
-				<div id="ind_article1"></div>
-				<!-- section1 끝-->
-				<!-- section2 시작 -->
-				<div style="background-color: white; border: 1px solid grey; height: 100px"></div><!-- section2 끝-->
-			</section>
-			<!-- 메인 section 끝 -->
+	<a href="home.html"
+		style="text-align: center; font-size: 1rem; text-align: left;"><h2>
+			&nbspStart Poll Form!
+			<h2></a> </header>
+			
+	<!-- footer_banner -->
+	<div class="col-11 footer_banner_zone">
+		<h3 class="blind">관련사이트</h3>
+		<!-- banner -->
+		<div class="flow_banner_box" style="text-align: center">
+			<div id="banner" class="flow_bann_area" style="margin: 0 auto">
+				<ul>
+					<li><a href="#"> [제목] 비트코인 미래예측  [대분류] 금융 │
+					</a></li>
 
-			<!-- 로그인, 로그인 밑 section 시작 -->
-			<section class="index_Banner" align="middle">
-				<div class="user_login" align="middle">
-						<table>
-							<tr><td style="font-size: 15px;" colspan="2"><b style="color: grey;"><%=id %></b> 님 안녕하세요!&nbsp&nbsp&nbsp&nbsp<a href="index.html" style="text-decoration: underline; color: grey; font-weight: bold; font-size: 14px; background-color: #F3F7F9;">로그아웃</a></td></tr>
-							<tr><td><form method="POST" action="mypage.html">
-								<input type="submit" id="user_mine" value="내 설문조사 바로가기">
-								</form>
-							</td>
-							<td><form method="POST" action="makeForm.html">
-								<input type="submit" id="user_mine" value="설문조사 작성하기">
-								</form></td></tr>
-						</table>
-					<div>
-					</div>
-				</div>	
-			</section>
-			<!-- 로그인, 로그인 밑 section 끝 -->
-		</div>  
-               
-                 <%
+					<li><a href="#"> [제목] 기존 스탠드에 대한 개선방안  [대분류] 문화 │
+					</a></li>
+					<li><a href="#"> [제목] 박정희 동상 설립 문제  [대분류] 사회 │
+					</a></li>
+					
+					<li><a href="#"> [제목] 참여해주세요  [대분류] 문학도서 │
+					</a></li>
+					<li><a href="#"> [제목] mbc결방 의견  [대분류] tv │
+					</a></li>
+					<li><a href="#"> [제목] 2017년 행복하셨나요  [대분류] 기타/일반 │
+					</a></li>
+					<li><a href="#"> [제목] 직장인 피로지수 [대분류] 사회 │
+					</a></li>
+					
+					<li><a href="#"> [제목] 겨울철 대표 간식  [대분류] 소비 │
+					</a></li>
+
+					<li><a href="#"> [제목] 겨울 코트 추천 [대분류] 소비 │
+					</a></li>
+					<li><a href="#"> [제목] 킥보드 추천 부탁합니다  [대분류] 소비 │
+					</a></li>
+					
+					<li><a href="#"> [제목] 참여해주세요  [대분류] 문학도서 │
+					</a></li>
+				</ul>
+			</div>
+
+		
+			<div class="flow_ctrl_box">
+				<a href="#" id="banner_left" class="back"><span class="blind">이전</span></a>
+				<a href="#" id="banner_right" class="next"><span class="blind">다음</span></a>
+			</div>
+			<!-- //controll -->
+		</div>
+		<!-- //banner -->
+
+	</div>
+	<!-- //footer_banner -->
+	
+	
+	<footer></footer>
+	 <%
     }
     
     if( !isLogin )
@@ -202,18 +149,6 @@
    
   
  %>
-
+	
 </body>
- </html>
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+</html>

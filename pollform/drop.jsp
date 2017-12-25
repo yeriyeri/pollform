@@ -1,125 +1,36 @@
-<%@ page import="java.sql.*" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, model.DBUtil"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="my_style.css" />
+<link type="text/css" rel="stylesheet" href="normalize.css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./js/jquery.carouFredSel-5.5.0-packed.js"></script>
+<script type="text/javascript" src="./js/flow_banner.js"></script>
 </head>
-<body class="index">
-	<!-- 공통 부분-->
-	<div class="index_top" display="block">
-			<table  align="right" class="index_topSrc">
-				<tr>
-					<td style="border: none">
-						<input type="text" name="tagSrc" placeholder="&nbsp&nbsp태그 검색" style="line-height: 17px;">
-					</td>
-					<td style="border: none">
-						<input type="submit" value="검색" style="margin-left: -6px; border: none; height: 23px; color: white; background-color: #4d4d4d">
-					</td>
-				</tr>
-			</table>
-		<header>
-			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
-		</header>
-		<!-- 메뉴 시작 -->
-		<div class="menu">
-			<nav id="topMenu">
-				<ul>
-					<li class="topMenuLi"><a class="menuLink" href="">교육</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">학교 교육</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">교육 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">문화</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">문학 도서</a></li>
-							<li><a href="" class="submenuLink">순수예술</a></li>
-							<li><a href="" class="submenuLink">영화/가요/연예</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">문화 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">매체</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">TV</a></li>
-							<li><a href="" class="submenuLink">라디오</a></li>
-							<li><a href="" class="submenuLink">신문</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 매체</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">사회</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">복지</a></li>
-							<li><a href="" class="submenuLink">자연/환경</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">사회 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">정치</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">국회</a></li>
-							<li><a href="" class="submenuLink">국방</a></li>
-							<li><a href="" class="submenuLink">대통령</a></li>
-							<li><a href="" class="submenuLink">사법/치안</a></li>
-							<li><a href="" class="submenuLink">정당</a></li>
-							<li><a href="" class="submenuLink">정부</a></li>
-							<li><a href="" class="submenuLink">행정</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">정치 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">경제/산업</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">건설</a></li>
-							<li><a href="" class="submenuLink">과학</a></li>
-							<li><a href="" class="submenuLink">교통</a></li>
-							<li><a href="" class="submenuLink">금융</a></li>
-							<li><a href="" class="submenuLink">기업</a></li>
-							<li><a href="" class="submenuLink">대외경제/무역</a></li>
-							<li><a href="" class="submenuLink">부동산</a></li>
-							<li><a href="" class="submenuLink">경제 일반</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">산업 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">라이프스타일</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">가정/결혼</a></li>
-							<li><a href="" class="submenuLink">관광</a></li>
-							<li><a href="" class="submenuLink">소비</a></li>
-							<li><a href="" class="submenuLink">여가</a></li>
-							<li><a href="" class="submenuLink">정보</a></li>
-							<li><a href="" class="submenuLink">직장</a></li>
-							<li><a href="" class="submenuLink">정보/통신</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">기타 일반</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">특수계층조사</a>
-						<ul class="submenu">
-							<li><a href="" class="submenuLink">교포/외국인</a></li>
-							<li><a href="" class="submenuLink">노인</a></li>
-							<li><a href="" class="submenuLink">성인</a></li>
-							<li><a href="" class="submenuLink">아동</a></li>
-							<li><a href="" class="submenuLink">장애인</a></li>
-							<li><a href="" class="submenuLink">청소년</a></li>
-							<li><a href="" class="submenuLink" style="border-bottom: solid 1px #F5F7F9;">복지</a></li>
-						</ul>
-					</li>
-						<li>|</li>
-					<li class="topMenuLi"><a class="menuLink" href="">기타</a></li>
-				</ul>
-			</nav>
-		</div>
-		<!-- 메뉴 끝 -->
+<body>
+	<header>
+	<div class="row align">
+		<form>
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for...">
+				<span class="input-group-btn"> <input type="button"
+					class="btn btn-primary" value="검색">
+				</span>
+			</div>
+		</form>
+		<a class="nav-link" href="login.jsp">LogIn</a>
 	</div>
-	<!-- 공통 부분 끝 -->
+	<a href="home.html"
+		style="text-align: center; font-size: 1rem; text-align: left;"><h2>
+			&nbspStart Poll Form!
+			<h2></a> </header>
 	<div id="memR_middle" align="middle">
 		<!-- 메인 section 시작 -->
 		<section style="padding: 6% 0px 0px 0px">
@@ -129,7 +40,7 @@
 				<h2>탈퇴가 완료되었습니다.</h2>
 				
 				<br/><br/>
-				<form method="POST" action="index.html"><input type="submit" id="member_btn" value="메인으로 이동"></form>
+				<form method="POST" action="index.jsp"><input type="submit" id="member_btn" value="메인으로 이동"></form>
 			</div>
 			<!-- section1 끝-->
 		</section>
@@ -177,7 +88,7 @@
      
      // 4단계 실행
      pstmt.executeUpdate(); //insert,update,delete
-     out.println("삭제 성공!");
+    
    }
   }catch (Exception e) {
    e.printStackTrace();
@@ -188,7 +99,40 @@
    if(con!=null)try{con.close();}catch(SQLException ex){}
   }
  %>
+	
+	<!-- 	jdbc 연결 시작 -->
+	<%
+// 		Connection conn = null;
+// 		String url = "jdbc:mysql://localhost:3306/researchdb";
+// 		String user = "root";
+// 		String passwd = "0707";
 
+// 		try {
+// 			conn = DriverManager.getConnection(url, user, passwd);
+// 			String str = "&nbsp&nbsp&nbspDBConnection Success!<br/>";
+// 			if (conn != null)
+// 				out.println("<a href=\"makeForm.html\">" + str + "</a><br/>");
+// 		} catch (SQLException e) {
+// 			// TODO Auto-generated catch block
+// 			e.printStackTrace();
+// 		}
 
+// 		try {
+// 			ResultSet rs = DBUtil.researchList(conn);
+// 			if (rs != null)
+// 				while (rs.next()) {
+// 					out.println("<div class=\" div-display\">" + "\n" + "설문지ID: " + rs.getString(1) + "\n"
+// 							+ "작성자: " + rs.getString(2) + "\n" + "제목: " + rs.getString(3) + "\n" + "대분류: "
+// 							+ rs.getString(4) + "\n" + "세부분류: " + rs.getString(5) + "\n" + "유형: " + rs.getString(6)
+// 							+ "\n" + "세부유형: " + rs.getString(7) + "\n" + "문항수: " + rs.getString(8) + "\n" + "시작일: "
+// 							+ rs.getString(9) + "\n" + "마감일: " + rs.getString(10) + "\n" + "태그: " + rs.getString(11)
+// 							+ "\n</div>");
+// 				}
+// 		} catch (SQLException e) {
+// 			e.printStackTrace();
+// 		}
+	%>
+	<!-- 	jdbc 연결 끝 -->
+	<footer></footer>
 </body>
 </html>

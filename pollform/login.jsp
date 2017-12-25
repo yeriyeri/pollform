@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, model.DBUtil_"%>
-<%@ page import="check.SearchService" %>
+<%@ page import="java.sql.*, model.DBUtil"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="my_style.css" />
 <link type="text/css" rel="stylesheet" href="normalize.css" />
+<link type="text/css" rel="stylesheet" href="mystyle.css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript"
@@ -16,22 +16,6 @@
 <script type="text/javascript" src="./js/flow_banner.js"></script>
 </head>
 <body>
-
-<%
-request.setCharacterEncoding("utf-8");
-
-String id=request.getParameter("id");
-String phone = request.getParameter("phone");
-String Phone=phone;
-SearchService searchService = SearchService.getInstance();
-
-String passwd = searchService.searchPwd(id,phone);
-
-
-
-%>
-
-
 	<header>
 	<div class="row align">
 		<form>
@@ -42,32 +26,39 @@ String passwd = searchService.searchPwd(id,phone);
 				</span>
 			</div>
 		</form>
-		<a class="nav-link" href="login.jsp">LogIn</a>
+		<a class="nav-link" href="index.html">LogIn</a>
 	</div>
 	<a href="home.html"
 		style="text-align: center; font-size: 1rem; text-align: left;"><h2>
 			&nbspStart Poll Form!
 			<h2></a> </header>
-	<div id="memR_middle" align="middle">
-		<!-- 메인 section 시작 -->
-		<section>
-			<!-- section1 시작 --><br/></br>
-			<div style="color: grey; background-color: white; border: 1px solid grey; height: auto; width: 70%; padding-bottom: 5%;">
-				<br/><br/>
-				<h3>&lt비밀번호 찾기&gt</h3><br/>
-				<h5 style=""><%if(passwd!= null){ %>
-   
-      <%=id%>님의 비밀번호는  <%=passwd%>입니다.</h5><br/> 
-
- <%} else{%>
-				<h5 style="color: red">입력한 정보와 일치하는 사용자가 존재하지 않습니다.</h5><br/>      <%} %>
-				<button class="makeR_btn"><a href="index.jsp">메인으로 이동</a></button>
-				<button class="makeR_btn"><a href="findIdpw.jsp">아이디/비밀번호 찾기로 이동</a></button>
-			</div>
-			<!-- section1 끝-->
-		</section>
-		<!-- 메인 section 끝 -->
-	</div>
+			
+	<!-- footer_banner -->
+	
+			<section class="index_Banner" align="middle">
+				<div class="index_login" align="middle">
+					<form method="POST" action="loginConfirm.jsp">
+						<table>
+						<tr>
+							<td width="70%"  >
+								<div>
+									<input type="text" name="id" class="index_lgBox" placeholder="&nbsp&nbsp아이디" border="1px solid black">
+									<input type="password" name="passwd" class="index_lgBox" placeholder="&nbsp&nbsp비밀번호">
+								</div>
+							</td>
+							<td>
+							
+									<input type="submit" value="로그인" id="index_btn">
+							</td>
+						</tr>
+						</table>
+					</form>
+					<div id="index_find" >
+						<a href="findIdpw.jsp" target="_parent";>아이디/비밀번호 찾기</a>
+				<a href="join_member.jsp" target="_parent">회원가입</a>
+					</div>
+				</div>	
+			</section>
 	<!-- 	jdbc 연결 시작 -->
 	<%
 // 		Connection conn = null;

@@ -1,0 +1,277 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="my_style.css" />
+<style>
+div.mp_middle {
+	background-color: #FFFFFF;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-top: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.button {
+	border: 1x solid #6E6E6E; /*---테두리 정의---*/
+	background-Color: #FFFFFF; /*--백그라운드 정의---*/
+	font: 20px; /*--폰트 정의---*/
+	font-weight: bold; /*--폰트 굵기---*/
+	color: #6E6E6E; /*--폰트 색깔---*/
+	width: 150px;
+	height: 40px; /*--버튼 크기---*/
+}
+
+.button1 {
+	border: 1x solid #6E6E6E; /*---테두리 정의---*/
+	background-Color: #FFFFFF; /*--백그라운드 정의---*/
+	font: 20px; /*--폰트 정의---*/
+	font-weight: bold; /*--폰트 굵기---*/
+	color: #6E6E6E; /*--폰트 색깔---*/
+	width: 150px;
+	height: 40px; /*--버튼 크기---*/
+}
+
+select {
+	width: 300px;
+	height: 50px;
+	padding-left: 10px;
+	font-size: 18px;
+	color: #585858;
+	border: 1px solid #2E2E2E;
+	border-radius: 3px;
+	-webkit-appearance: none; /* 화살표 없애기 for chrome*/
+	-moz-appearance: none; /* 화살표 없애기 for firefox*/
+	appearance: none; /* 화살표 없애기 공통*/
+}
+
+select::-ms-expand {
+	display: none; /* 화살표 없애기 for IE10, 11*/
+}
+
+body {
+	text-align: center;
+}
+
+body:before {
+	content: '';
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+	<header>
+
+	<div>
+
+		<form method="POST" action="index.html>
+			<section class="dropdown-el"style="padding: 6% 0px 0px 0px"> <select id="nice"
+				name="selectbox" class="select-arrow-image"
+				onchange="categoryChange(this)">
+
+				<option>상위 카테고리를 선택하세요</option>
+
+				<option value="a">교육</option>
+
+				<option value="b">문화</option>
+
+				<option value="c">매체</option>
+
+				<option value="d">사회</option>
+
+				<option value="e">정치</option>
+
+				<option value="f">경제/산업</option>
+
+				<option value="g">라이프스타일</option>
+
+				<option value="h">특수계층조사</option>
+
+				<option value="i">기타</option>
+
+
+
+			</select> <select id="good" name="list" class="_list">
+
+				<option>하위 카테고리를 선택하세요</option>
+
+			</select> <br>
+
+			<br>
+
+			<input type="button" class="button btn btn-primary" onclick="add_row();" value="추가하기" />
+
+			<script>
+				function button_click() {
+
+					var target = document.getElementById("nice");
+
+					var target1 = document.getElementById("good");
+
+					target.options[target.selectedIndex].text;
+
+				}
+
+				function add_row() {
+
+					var target = document.getElementById("nice");
+
+					var target1 = document.getElementById("good");
+
+					var stock_tbody = document.getElementById("stock_tbody");
+
+					var row = stock_tbody.insertRow(stock_tbody.rows.length);
+
+					var cell1 = row.insertCell(0);
+
+					var cell2 = row.insertCell(1);
+
+					cell1.innerHTML = target.options[target.selectedIndex].text;
+
+					cell2.innerHTML = target1.options[target1.selectedIndex].text;
+
+				}
+			</script> <br>
+
+			<br>
+
+			<br>
+
+			<table id='stock_table' align="center">
+
+				<thead id='stock_thead'>
+
+					<tr>
+
+
+					</tr>
+
+				</thead>
+
+				<tbody id='stock_tbody'>
+
+					<tr>
+
+						<td><input class="makeLine" type=text name='opty_subj[]'
+							value="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp상위메뉴"
+							size=20></td>
+
+						<td><input class="makeLine" type=text name='opt[0][]'
+							value="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp하위메뉴"
+							size=20></td>
+
+					</tr>
+
+				</tbody>
+
+			</table>
+		</form>
+
+		<span id=msg></span>
+
+		<script>
+			var stock_table = document.getElementById('stock_table');
+
+			var stock_thead = document.getElementById('stock_thead');
+
+			var stock_tbody = document.getElementById('stock_tbody');
+
+			var stock_tr = null;
+
+			var stock_td = null;
+
+			var stock_x = 0;
+
+			var stock_y = 0;
+
+			var msg = document.getElementById('msg');
+		</script>
+
+
+
+		<script>
+			function categoryChange(e) {
+
+				var good_a = [ "학교 교육", "교육 일반" ];
+
+				var good_b = [ "문학도서", "순수예술", "영화/가요/연예", "문화 일반" ];
+
+				var good_c = [ "TV", "라디오", "신문", "기타 매체" ];
+
+				var good_d = [ "복지", "자연/환경", "사회 일반" ];
+
+				var good_e = [ "국회", "국방", "대통령", "사법/치안", "정당", "정부", "행정",
+						"정치 일반" ];
+
+				var good_f = [ "건설", "과학", "교통", "금융", "기업", "대외 경제/무역", "부동산",
+						"경제 일반" ];
+
+				var good_g = [ "가정/결혼", "관광", "소비", "여가", "정보", "직장", "정보/통신",
+						"기타 일반" ];
+
+				var good_h = [ "교포/외국인", "노인", "성인", "아동", "장애인", "청소년", "복지" ];
+
+				var good_i = [ "" ];
+
+				var target = document.getElementById("good");
+
+				if (e.value == "a")
+					var d = good_a;
+
+				else if (e.value == "b")
+					var d = good_b;
+
+				else if (e.value == "c")
+					var d = good_c;
+
+				else if (e.value == "d")
+					var d = good_d;
+
+				else if (e.value == "e")
+					var d = good_e;
+
+				else if (e.value == "f")
+					var d = good_f;
+
+				else if (e.value == "g")
+					var d = good_g;
+
+				else if (e.value == "h")
+					var d = good_h;
+
+				else if (e.value == "i")
+					var d = good_i;
+
+				target.options.length = 0;
+
+				for (x in d) {
+
+					var opt = document.createElement("option");
+
+					opt.value = d[x];
+
+					opt.innerHTML = d[x];
+
+					target.appendChild(opt);
+
+				}
+
+			}	
+		</script>
+		<input type="submit" class="btn btn-primary" value="메인으로 이동">
+		</form>
+
+
+	</div>
+</body>
+</html>

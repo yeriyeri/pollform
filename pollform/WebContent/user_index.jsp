@@ -1,3 +1,7 @@
+<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +10,19 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body class="index">
+<%
+request.setCharacterEncoding("utf-8"); 
+
+
+
+
+
+String id = request.getParameter("id");
+
+%>
 	<!-- 공통 부분-->
 	<div class="index_top" display="block">
+	<form method="POST" action="tag_result.jsp">
 			<table  align="right" class="index_topSrc">
 				<tr>
 					<td style="border: none">
@@ -18,6 +33,7 @@
 					</td>
 				</tr>
 			</table>
+			</form>
 		<header>
 			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
 		</header>
@@ -117,34 +133,35 @@
 		<!-- 메뉴 끝 -->
 	</div>
 	<!-- 공통 부분 끝 -->
-	<div id="memR_middle" align="middle">
-		<!-- 메인 section 시작 -->
-		<section>
-			<!-- section1 시작 --><br/></br>
-			<div style="color: grey; background-color: white; border: 1px solid grey; height: auto; width: 70%; padding-bottom: 5%;">
-				<br/><br/>
-				<h3>아이디/ 비밀번호 찾기입니다!</h3>
-				<br/><br/>
-				<div class="findIDPW">
-<!-- 				<form method="POST" action="findIDResult.html"> -->
-					<h5>아이디를 찾으려면 다음을 입력하세요</h5>
-					<h5>이름: <input type="text" name="findIDname"></h5>
-					<h5>전화번호: <input type="text" name="findIDphone"></h5>
-					<button class="makeR_btn" width=""><a href="findIDResult.html">아이디 찾기</a></button>
-<!-- 				</form> -->
-				</div>
-				<div class="findIDPW">
-<!-- 				<form method="POST" action="findPWResult.html"> -->
-					<h5>비밀번호를 찾으려면 다음을 입력하세요</h5>
-					<h5>아이디: <input type="text" name="findPWid"></h5>
-					<h5>전화번호: <input type="text" name="findPWphone"></h5>
-					<button class="makeR_btn" width=""><a href="findPWResult.html">비밀번호 찾기</a></button>
-<!-- 				</form> -->
-				</div>
-			</div>
-			<!-- section1 끝-->
-		</section>
-		<!-- 메인 section 끝 -->
-	</div>
+	<div class="index_middle">
+			<!-- 메인 section 시작 -->
+			<section class="index_article" align="middle">
+				<!-- section1 시작 -->
+				<div id="ind_article1"></div>
+				<!-- section1 끝-->
+				<!-- section2 시작 -->
+				<div style="background-color: white; border: 1px solid grey; height: 100px"></div><!-- section2 끝-->
+			</section>
+			<!-- 메인 section 끝 -->
+
+			<!-- 로그인, 로그인 밑 section 시작 -->
+			<section class="index_Banner" align="middle">
+				<div class="user_login" align="middle">
+						<table>
+							<tr><td style="font-size: 15px;" colspan="2"><b style="color: grey;"><%=id %></b> 님 안녕하세요!&nbsp&nbsp&nbsp&nbsp<a href="index.html" style="text-decoration: underline; color: grey; font-weight: bold; font-size: 14px; background-color: #F3F7F9;">로그아웃</a></td></tr>
+							<tr><td><form method="POST" action="mypage.html">
+								<input type="submit" id="user_mine" value="내 설문조사 바로가기">
+								</form>
+							</td>
+							<td><form method="POST" action="makeForm.html">
+								<input type="submit" id="user_mine" value="설문조사 작성하기">
+								</form></td></tr>
+						</table>
+					<div>
+					</div>
+				</div>	
+			</section>
+			<!-- 로그인, 로그인 밑 section 끝 -->
+		</div>
 </body>
 </html>

@@ -19,6 +19,6 @@
   </context-param>
   <context-param>
     <param-name>dbpasswd</param-name>
-    <param-value>0707</param-value>
+    <param-value>401sql</param-value>
   </context-param>
 </web-app>

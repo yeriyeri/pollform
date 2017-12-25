@@ -77,7 +77,7 @@ public class GetResearchInfo extends HttpServlet {
 					result = "<div><p>설문조사명: <input type=\"hidden\" name=\"researchID\" value=\"" + rs.getString(1)
 							+ "\"/>" + rs.getString(3) + "</p><p>조사자: " + rs.getString(2) + "</p><p>카테고리 대분류: " + strs.get(0)
 							+ "</p><p>카테고리 세부 분류: " + strs.get(1) + "</p><p>조사 시작일: " + rs.getString(9) + "<p></p>조사 마감일: "
-							+ rs.getString(10) + "</p><p>유형: " + lType + "</p><p>세부 유형: " + sType + "</p><p>태그: " + rs.getString(11)
+							+ rs.getString(10) + "</p><p>유형: " + lType + "</p><p>세부 유형: " + sType + "</p><p>문항수: " + rs.getString(8)+"</p><p>태그: " + rs.getString(11)
 							+ "</p></div><br/><br/>";
 					System.out.println("ResearchID: " + rs.getString(1));
 				}

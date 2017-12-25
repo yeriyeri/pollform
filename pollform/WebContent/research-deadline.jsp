@@ -6,7 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="my_style.css" />
-<title>Insert title here</title>
+<title>Welcome!</title>
+<script>
+// iframe parent window 
+function checkForm(){ 
+    document.content_form.target="_parent"; 
+    document.content_form.submit(); 
+} 
+</script>
 </head>
 <body>
 <!-- 	jdbc 연결 시작 -->
@@ -14,7 +21,7 @@
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost:3306/researchdb";
 		String user = "root";
-		String passwd = "0707";
+		String passwd = "401sql";
 		
 		try {
 			conn = DriverManager.getConnection(url, user, passwd);
@@ -35,7 +42,7 @@
 					List<String> ctgs = FindCtg.Ctg(rs.getString(4), rs.getString(5));
 					out.println("<div class=\"div-display\"><input type=\"hidden\" name=\"researchID\" value=\"" + rs.getString(1) + "\"/>" + "\n"
 							+ "제목: " + rs.getString(3)
-							+ "\n대분류: " + ctgs.get(0)+ "\t<button class=\"btn2 btn2-primary\" type=\"submit\" target=\"_new\" onClick=\"checkForm()\" onsubmit=\"return true;\">바로가기</button></div>");
+							+ "\n대분류: " + ctgs.get(0)+ "\t<button class=\"btn2 btn2-primary\" type=\"submit\" onClick=\"checkForm()\" onsubmit=\"return true;\">바로가기</button></div>");
 				count++;
 				}
 				out.println("</form>");

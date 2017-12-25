@@ -1,0 +1,141 @@
+	nav {font-size: 90%;
+		}
+	header {text-align: center;
+			font-family: "Times New Roman", Serif;
+			padding-top: 0.5%;
+			}
+	footer { border-top: 2px solid #FF7373;
+			border-bottom: 1px solid #FF7373;
+			padding: 15px
+			}
+	.cona { /* HOME용*/
+		text-align: center;
+		background-color: rgba(0,0,0,0.03);
+		margin-top: 1%;
+		}
+	.conb { /*자소서용*/
+		background-color: rgba(0,0,0,0.03);
+		margin-top: 1%;
+		}
+	.conc { /*이력서용*/
+		margin-top: 1%;
+		}
+	.cond { /*table 수정용*/
+		background-color: rgba(0,0,0,0);
+		margin-top: 5% 	 ;
+		}
+	.cone { /*name 수정용*/
+		background-color: rgba(0,0,0,0);
+		margin-top: 10%;
+		margin-left: 2%;
+		margin-right: 2%;
+		}
+	.conf { /*name, academic, family 수정용*/
+		background-color: rgba(256, 256, 256, 0.6);
+		margin-top: 10%;
+		text-align: center;
+		}
+	html {background-image: url("image/cherry.png");
+			background-repeat: no-repeat;
+			background-attachment: scroll;
+			background-position: -90px -180px;
+			background-size: 70%;
+		}
+
+	a:link {text-decoration:none;}
+	a.nav:link {text-decoration:none; color:black;}
+	a.nav:visited {text-decoration:none; color:black;}
+	
+	table {border-collapse: collapse;
+		text-align: center;
+		color: black;
+		width: 100%;
+		padding: 0px 0px;
+		margin: 0px 0px;
+		background-color: rgba(256, 256, 256, 0.8);
+		height: 100%;
+		border: 1px solid black;
+		}
+		
+	#bc {background-color: rgba(255, 119, 119, 0.8);} /*table 색상*/
+	
+	a.bt:link {text-decoration:none; 
+			color:black;}
+			
+	a.bt:visited {text-decoration: none;
+		   color: black;}
+
+	* {
+    box-sizing: border-box;
+	}
+
+	.row:after {
+    content: "";
+    clear: both;
+    display: block;
+	}
+	
+	[class*="col-"] {
+    float: left;
+    padding: 15px;
+    width: 100%;
+	}
+	
+	.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	}
+	
+	.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    border-bottom: 2px solid #FF7373;
+    color: #FFFFFF;
+    box-shadow: 5px 1px 5px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.1);
+    font-family:"Times New Roman", Serif;
+	}
+	
+	.menu li:hover {
+    background-color: #FF7373;
+    }
+
+	.footer { border-top: 2px solid #FF7373;
+			border-bottom: 1px solid #FF7373;
+			padding: 15px
+			}
+			
+	<!-- For mobile phones:-->
+	[class*="col-"] {
+
+	}
+	
+	@media only screen and (min-width: 600px){<!--For tablets:-->
+	.col-m-1 {width: 8.33%;}
+	.col-m-2 {width: 16.66%;}
+	.col-m-3 {width: 25%;}
+	.col-m-4 {width: 33.33%;}
+	.col-m-5 {width: 41.66%;}
+	.col-m-6 {width: 50%;}
+	.col-m-7 {width: 58.33%;}
+	.col-m-8 {width: 66.66%;}
+	.col-m-9 {width: 75%;}
+	.col-m-10 {width: 83.33%;}
+	.col-m-11 {width: 91.66%;}
+	.col-m-12 {width: 100%;}
+	}
+	
+	@media only screen and (min-width: 768px){<!--For computer:-->
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+	}

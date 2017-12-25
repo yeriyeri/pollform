@@ -23,42 +23,60 @@
 			<div class="flow_banner_box" style="text-align: center">
 				<div id="banner" class="flow_bann_area" style="margin: 0 auto">
 					<form action="">
-						<ul>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_01.jpg" alt="banner_01" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_02.jpg" alt="banner_02" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_03.jpg" alt="banner_03" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_04.jpg" alt="banner_04" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_05.jpg" alt="banner_05" />
-							</a></li>
+						<ul style="top: 13px">
+							<li><a href="#"> [제목] 비트코인 미래예측 [대분류] 금융 │ </a></li>
 
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_06.jpg" alt="banner_06" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_07.jpg" alt="banner_07" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_01.jpg" alt="banner_01" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_02.jpg" alt="banner_02" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_03.jpg" alt="banner_03" />
-							</a></li>
-							<li><a href="#"> <img
-									src="./images/footer_banner_img_04.jpg" alt="banner_04" />
-							</a></li>
+							<li><a href="#"> [제목] 기존 스탠드에 대한 개선방안 [대분류] 문화 │ </a></li>
+							<li><a href="#"> [제목] 박정희 동상 설립 문제 [대분류] 사회 │ </a></li>
+
+							<li><a href="#"> [제목] 참여해주세요 [대분류] 문학도서 │ </a></li>
+							<li><a href="#"> [제목] mbc결방 의견 [대분류] tv │ </a></li>
+							<li><a href="#"> [제목] 2017년 행복하셨나요 [대분류] 기타/일반 │ </a></li>
+							<li><a href="#"> [제목] 직장인 피로지수 [대분류] 사회 │ </a></li>
+
+							<li><a href="#"> [제목] 겨울철 대표 간식 [대분류] 소비 │ </a></li>
+
+							<li><a href="#"> [제목] 겨울 코트 추천 [대분류] 소비 │ </a></li>
+							<li><a href="#"> [제목] 킥보드 추천 부탁합니다 [대분류] 소비 │ </a></li>
+
+							<li><a href="#"> [제목] 참여해주세요 [대분류] 문학도서 │ </a></li>
 						</ul>
+						<!-- 						<ul> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_01.jpg" alt="banner_01" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_02.jpg" alt="banner_02" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_03.jpg" alt="banner_03" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_04.jpg" alt="banner_04" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_05.jpg" alt="banner_05" /> -->
+						<!-- 							</a></li> -->
+
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_06.jpg" alt="banner_06" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_07.jpg" alt="banner_07" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_01.jpg" alt="banner_01" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_02.jpg" alt="banner_02" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_03.jpg" alt="banner_03" /> -->
+						<!-- 							</a></li> -->
+						<!-- 							<li><a href="#"> <img -->
+						<!-- 									src="./images/footer_banner_img_04.jpg" alt="banner_04" /> -->
+						<!-- 							</a></li> -->
+						<!-- 						</ul> -->
 					</form>
 				</div>
 

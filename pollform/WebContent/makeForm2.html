@@ -82,6 +82,11 @@
 	
 	function typeChange() {// 대분류 변한 경우
 		 var x = document.makeForm.largeType.options.selectedIndex;//선택한 인덱스
+		 if(x == 3){
+ 			 document.makeForm.smallType.style.display="none";
+ 			 document.makeForm.qAmount.style.display="none";
+ 			 document.getElementById("str").style.display="none";
+		 }
 		 var groups=document.makeForm.largeType.options.length;//대분류 갯수
 		 var group=new Array(groups);//배열 생성
 		 for (i=0; i<groups; i++) {
@@ -240,19 +245,22 @@
 						<option value="lCtg7">라이프스타일</option>
 						<option value="lCtg8">특수계층조사</option>
 						<option value="lCtg9">기타</option>
-					</select> 
-					<select name="smallCategory" class="dropdown-el" size=1>
-				 		<option value="sCtg">세부 분류</option>
-					</select><br/>
+					</select>
+					
+						<select id="id-sCtg" name="smallCategory" class="dropdown-el" size=1>
+					 		<option value="sCtg">세부 분류</option>
+						</select>
+					<br/>
 					<select name="largeType" class="dropdown-el" onchange="typeChange()" required="required" size=1>
 						<option value="lType" selected>유형</option>
 						<option value="lType1">선다형</option>
 						<option value="lType2">서답형</option>
+						<option value="lType3">혼합형</option>
 					</select>
 					<select name="smallType" class="dropdown-el"  required="required" size=1>
 						<option value="sType" selected>세부 유형</option>
 					</select>
-					<b>문항수</b> <input type="number" name="qAmount"  value="1" class="makeLine" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)">
+					<b id="str">문항수</b> <input type="number" name="qAmount"  value="1" class="makeLine" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)">
 					<div >
 						<b>시작일</b> <input type="datetime-local" name="startDate" class="makeLine"><b>마감일</b> <input type="datetime-local" name="endDate" class="makeLine">
 						<div>

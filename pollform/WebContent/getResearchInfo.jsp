@@ -34,7 +34,7 @@
 		<div class="col-8 input-box" style="padding-bottom: 2%; margin-bottom: 3%">
 			<form method="POST" action="getResearchFormat.do">
 				<%=request.getAttribute("result")%>
-				<input type="submit" class="btn btn-primary">
+				<input type="submit" class="btn btn-primary" value="바로 참여">
 			</form>
 		</div>
 	</div>

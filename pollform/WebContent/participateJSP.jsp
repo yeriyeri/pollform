@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<link rel="stylesheet" type="text/css" href="my_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Poll Form</title>
 <script type="text/javascript">
@@ -78,46 +78,38 @@
 }
 </style>
 </head>
-<body class="index">
-	<!-- 공통 부분-->
-	<div class="index_top" display="block">
-		<table align="right" class="index_topSrc">
-			<tr>
-				<td style="border: none"><input type="text" name="tagSrc"
-					placeholder="&nbsp&nbsp태그 검색" style="line-height: 17px;"></td>
-				<td style="border: none"><input type="submit" value="검색"
-					style="margin-left: -6px; border: none; height: 23px; color: white; background-color: #4d4d4d">
-				</td>
-			</tr>
-		</table>
-		<header> <a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll
-			Form</a> </header>
-	</div>
-	<!-- 공통 부분 끝 -->
-	<div width="100%" height="100%" id="workspace_middle">
-		<!-- 메인 section 시작 -->
-		<section> <!-- section1 시작 --> <!-- section1 끝--> </section>
-		<!-- section2 시작 -->
-		<section>
-		<form method="POST" action="dbParticipate.do">
-			<%
-				int curNum = Integer.parseInt(session.getAttribute("curNum").toString());
-				if (session.getAttribute("research") != null) {
-					List<String> tools = (List) session.getAttribute("research");
-					out.print(tools.get(curNum));
-					curNum++;
-				}
-				session.setAttribute("curNum", curNum);
-				out.print("<input type=\"submit\" value=\"다음\" id=\"makeJSP_btn\" style=\"margin-left: 15%;\">");
-			%><br />
+<body>
+	<header>
+	<div class="row align-right">
+		<form>
+			<div class="input-group">
+				<input class="form-control" type="text" placeholder="Search for...">
+				<span class="input-group-btn"> <input type="button"
+					class="btn btn-primary" value="검색">
+				</span>
+			</div>
 		</form>
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		</section>
-		<!-- section2 끝-->
+		<a class="nav-link" href="index.html">LogIn</a>
+	</div>
+	<a class="header-a" href="index.html"><h2>
+			&nbsp&nbsp&nbspStart Poll Form!
+			<h2></a> </header>
+	<div class="row" style="margin-top: 3%;">
+		<div class="col-8 input-box"
+			style="padding-bottom: 2%; margin-bottom: 3%">
+			<form method="POST" action="dbParticipate.do">
+				<%
+					int curNum = Integer.parseInt(session.getAttribute("curNum").toString());
+					if (session.getAttribute("research") != null) {
+						List<String> tools = (List) session.getAttribute("research");
+						out.print(tools.get(curNum));
+						curNum++;
+					}
+					session.setAttribute("curNum", curNum);
+					out.print("<input type=\"submit\" value=\"다음\" class=\"btn btn-primary\" value=\"작성 완료\" style=\"margin-top: 3%; margin-bottom: 4%\">");
+				%><br />
+			</form>
+		</div>
 	</div>
 </body>
 </html>

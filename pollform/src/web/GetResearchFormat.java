@@ -47,10 +47,9 @@ public class GetResearchFormat extends HttpServlet {
 		response.setContentType("text/html");
 
 		// 설문지ID
-		// int researchID =
-		// Integer.parseInt(request.getParameter("researchID").toString());
-		int researchID = 121;
-
+		int researchID = Integer.parseInt(request.getParameter("researchID").toString());
+//		int researchID = 121;
+		System.out.println("researchID2: " + researchID);
 		// 참여자ID
 		// String userID = (String) request.getParameter("userID");
 		String userID = "참여자" + (numID++);

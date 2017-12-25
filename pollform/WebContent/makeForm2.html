@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Poll Form</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<title>welcome!</title>
+<link type="text/css" rel="stylesheet" href="normalize.css" />
+<link type="text/css" rel="stylesheet" href="my_style.css" />
 <script language="javascript">
 	function categoryChange() {// 대분류 변한 경우
 	 var x = document.makeForm.largeCategory.options.selectedIndex;//선택한 인덱스
@@ -148,7 +149,7 @@
 			chkCode = "chkCode2";
 		
 			if(checkForm.title.value=="" || checkForm.largeCategory.value=="" || checkForm.smallCategory.value=="" || checkForm.largeType.value=="" || checkForm.smallType.value=="" || checkForm.qAmount.value==""
-					|| checkForm.startDate.value=="" || (startDate < today)|| checkForm.endDate.value=="" || chkCode=="chkCode1" || chkCode=="chkCode2"){
+					|| checkForm.startDate.value=="" || (startDate < today)|| checkForm.endDate.value=="" || chkCode=="chkCode1" || chkCode=="chkCode2" || checkForm.tag.value==""){
 				if(checkForm.title.value==""){
 					alert("제목란이 비어있습니다.");
 					checkForm.title.focus();
@@ -193,39 +194,41 @@
 				    alert("조사 소요 시간은 최소 30분입니다.");
 					checkForm.endDate.focus();
 					return false;
-				}else { 
+				} else if(checkForm.tag.value==""){
+					alert("검색 태그가 비어있습니다.");
+					checkForm.endDate.focus();
+					return false;
+				} else { 
 					return true;
 				}; 
 			}
 	 }
 </script>
 </head>
-<body class=index>
-	<!-- 공통 부분-->
-	<div class="index_top" display="block">
-			<table  align="right" class="index_topSrc">
-				<tr>
-					<td style="border: none">
-						<input type="text" name="tagSrc" placeholder="&nbsp&nbsp태그 검색" style="line-height: 17px;">
-					</td>
-					<td style="border: none">
-						<input type="submit" value="검색" style="margin-left: -6px; border: none; height: 23px; color: white; background-color: #4d4d4d">
-					</td>
-				</tr>
-			</table>
-		<header>
-			<a href="index.html" target="_parent">&nbsp&nbsp&nbspPoll Form</a>
-		</header>
-	</div>
-	<!-- 공통 부분 끝 -->
-	<div id="memF_middle" align="middle">
-		<!-- 메인 section 시작 -->
-		<section style="padding: 6% 0px 6% 0px">
-			<!-- section1 시작 -->
-			<div style="color: grey; background-color: white; border: 1px solid grey; height: 370px; width: 70%;">
+<body>
+	<header>
+		<div class="row align-right">
+			<form>
+				<div class="input-group">
+					<input class="form-control" type="text" placeholder="Search for...">
+					<span class="input-group-btn"> <input type="button"
+						class="btn btn-primary" value="검색">
+					</span>
+				</div>
+			</form>
+			<a class="nav-link" href="index.html">LogIn</a>
+		</div>
+		<a class="header-a" href="index.html"><h2>
+				&nbsp&nbsp&nbspStart Poll Form!
+				<h2></a>
+	</header>
+	<div class="row" style="margin-top: 3%">
+			<div class="col-8 input-box">
 				<form method="POST" action="makeWebFormat.do" name="makeForm" onsubmit="return valid_Check(this);">
-					<h3 style="margin: 6% 0px 6% 0px;">형식을 선택해주세요.</h3>
-					<b style="font-size: 13px; margin-bottom: 10px; display: inline-block; ">제목 <input type="text" name="title" class="makeF_date" placeholder="설문조사 이름" style="width: 150px; line-height: 100px;required: required"></b>
+					<h3 >형식을 선택해주세요.</h3>
+					<b >제목 <input type="text" name="title" class="makeLine"
+					placeholder="research name"
+					style="width: 150px; required: required" ></b>
 					<select name="largeCategory" class="dropdown-el" onchange="categoryChange()" size=1>
 						<option value="lCtg">대분류</option>
 						<option value="lCtg1">교육</option>
@@ -249,19 +252,22 @@
 					<select name="smallType" class="dropdown-el"  required="required" size=1>
 						<option value="sType" selected>세부 유형</option>
 					</select>
-					<b style="font-size: 13px">문항수 <input type="number" name="qAmount"  value="1" class="makeF_date" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)"></b>
-					<div style="margin-top: 1%; vertical-align: middle">
-						<b style="font-size: 13px">시작일 <input type="datetime-local" name="startDate" class="makeF_date">마감일 <input type="datetime-local" name="endDate" class="makeF_date"></b>
-						<div id="makeTag">
-							<input type="text" name="tag" placeholder="검색 태그" style="border: none; width: 60%; line-height: 24px;">
+					<b>문항수</b> <input type="number" name="qAmount"  value="1" class="makeLine" style="width: 50px; min: 1; max: 50; required: required" oninput="numCheck(this)">
+					<div >
+						<b>시작일</b> <input type="datetime-local" name="startDate" class="makeLine"><b>마감일</b> <input type="datetime-local" name="endDate" class="makeLine">
+						<div>
+							<input type="text" name="tag" class="makeLine" placeholder="검색 태그" >
 						</div>
 					</div>
-					<input type="submit" class="makeR_btn" onclick="document.getElementById('make_btn').submit();" value="선택한 툴로 이동" style="margin-top: 8%;">
+					<input type="submit" class="btn btn-primary" onclick="document.getElementById('make_btn').submit();" value="선택한 툴로 이동" style="margin-top: 8%;">
 				</form>
 			</div>
-			<!-- section1 끝-->
-		</section>
-		<!-- 메인 section 끝 -->
 	</div>
+	<script type="text/javascript">
+$( window ).resize(function() {
+	   //창크기 변화 감지
+	parent.document.location.reload();
+	});
+</script>
 </body>
 </html>

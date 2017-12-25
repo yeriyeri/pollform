@@ -2,10 +2,10 @@ jQuery(function() {
 
     $("#banner ul").carouFredSel({
         align : "left",
-        width : 1100, // ���α���
+//        width : 500, // ���α���
         height : 50, // ���α���
         items : {
-        visible : 6 // �������� ���� (5���� �������ٸ� +1�� �Ͽ� ���� ȿ���� ���´�.)
+//        visible : 6 // �������� ���� (5���� �������ٸ� +1�� �Ͽ� ���� ȿ���� ���´�.)
         },
         scroll : {
         items : 1, // �Ѹ��Ѿ�� ����
@@ -15,6 +15,10 @@ jQuery(function() {
         next : "#banner_right", // ���������� �̵� ��ư
         prev : "#banner_left", // �������� �̵� ��ư
         direction : "left" // �Ѹ� ����
+    });
+    
+    $("#banner_right").click(function(){
+    	alert(innerBody.offsetWidth);
     });
 
     $("#banner_pause").click(function(){

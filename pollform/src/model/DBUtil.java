@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 public class DBUtil {
-	public static ResultSet researchList(Connection con) {
+	public static ResultSet researchList(Connection con, String str) {
 		String sqlSt = "SELECT 설문지ID, 작성자, 제목, 대분류, 세부분류, 유형, 세부유형, 문항수, 시작일, 마감일, 검색태그 FROM 설문지 ";
 
 		Date today = new Date();
@@ -16,7 +16,25 @@ public class DBUtil {
 		try {
 			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-			if (st.execute(sqlSt + "ORDER BY 설문지ID ASC")) {
+			if (st.execute(sqlSt + str)) {
+				return st.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static ResultSet researchList(Connection con) {
+		String sqlSt = "SELECT 설문지ID, count(*) as 참여자수 FROM 참여 group by 설문지ID order by 참여자수desc";
+
+		Date today = new Date();
+		Statement st;
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			if (st.execute(sqlSt)) {
 				return st.getResultSet();
 			}
 		} catch (SQLException e) {
@@ -44,6 +62,23 @@ public class DBUtil {
 		return null;
 	}
 
+	public static ResultSet getResearchInfo(Connection con, int researchID) {
+		String sqlSt = "SELECT * FROM 설문지 WHERE 설문지ID=";
+
+		Statement st;
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			if (st.execute(sqlSt + "'" + researchID + "'")) {
+				return st.getResultSet();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static ResultSet findResearchType(Connection con, int researchID) {
 		String sqlSt = "SELECT 세부유형, 문항수 FROM 설문지 WHERE 설문지ID=";
 

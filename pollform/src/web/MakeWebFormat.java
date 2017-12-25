@@ -58,6 +58,7 @@ public class MakeWebFormat extends HttpServlet {
 		String endDate = (String) request.getParameter("endDate");
 		String tag = (String) request.getParameter("tag");
 
+		System.out.println(smallCtg);
 		request.setAttribute("title", title);
 		request.setAttribute("lCtg", largeCtg);
 		request.setAttribute("sCtg", smallCtg);
